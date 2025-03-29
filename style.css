@@ -73,6 +73,25 @@ body {
   will-change: transform; /* Optimize for GPU */
 }
 
+/* Preload critical fonts to improve performance */
+@media screen {
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* Ensures text is visible while font loads */
+    src: local('Space Grotesk'), url('/fonts/SpaceGrotesk-Regular.woff2') format('woff2');
+  }
+  
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap; /* Ensures text is visible while font loads */
+    src: local('Space Grotesk Bold'), url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+  }
+}
+
 /* Optimize grid animation */
 .grid {
   position: fixed;
@@ -88,6 +107,21 @@ body {
   will-change: background-position;
   animation: gridFloat 30s ease-in-out infinite alternate;
   contain: strict; /* Improve rendering performance */
+}
+
+/* Improve grid performance in dark mode */
+:root[data-theme="dark"] .grid,
+:root:not([data-theme="light"]) .grid {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Add grid for light mode with appropriate contrast */
+:root[data-theme="light"] .grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
 }
 
 @keyframes gridFloat {
@@ -119,6 +153,7 @@ body {
   margin: 0 auto;
   will-change: transform, opacity; /* Optimize for GPU */
   content-visibility: auto; /* Improve rendering performance */
+  backface-visibility: hidden;
 }
 
 .content::before {
@@ -220,6 +255,7 @@ body {
   z-index: 1;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  backface-visibility: hidden;
 }
 
 /* Fix for light mode - ensure icons stay dark */
@@ -362,6 +398,7 @@ body {
   cursor: pointer;
   position: relative;
   transition: transform var(--transition-default);
+  backface-visibility: hidden;
 }
 
 .logo-link:focus {
@@ -424,6 +461,7 @@ body {
   opacity: 0;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  backface-visibility: hidden;
 }
 
 /* Fix for light mode theme toggle icons */
@@ -444,6 +482,12 @@ body {
 
 .theme-toggle:hover i {
   transform: rotate(30deg);
+}
+
+/* Add focus styles for keyboard navigation accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 /* Global touch interface improvements */
@@ -477,6 +521,17 @@ body {
     transform: none;
     letter-spacing: normal;
   }
+}
+
+/* Fix for email address in SEO - add if you have email in your HTML */
+.email-address {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+
+/* Add aria-hidden handling for screen readers */
+[aria-hidden="true"] {
+  display: none;
 }
 
 /* Responsive styles */
@@ -516,6 +571,13 @@ body {
   .button {
     padding: 12px 24px;
     min-width: 180px;
+  }
+}
+
+/* Fix for mobile Safari 100vh bug */
+@supports (-webkit-touch-callout: none) {
+  .background, .grid {
+    height: -webkit-fill-available;
   }
 }
 
