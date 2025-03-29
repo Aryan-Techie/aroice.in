@@ -4,29 +4,153 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aryan Jangra (AryanTechie) / (AROICE) - Computer Science student at IIT Patna, self-improvement content creator, and developer. Founder of Aroice, exploring the intersection of technology and content creation. Developing Argon productivity extension.">
-    <meta name="keywords" content="Aryan Jangra, AryanTechie, Aroice, IIT Patna, Computer Science,content creator, developer, Argon extension, productivity tools">
-    <meta name="author" content="Aryan Jangra">
-    <meta name="author" content="Aryan Techie">
-    <meta name="author" content="AROICE">
+    <meta name="keywords" content="Aryan Jangra, AryanTechie, Aroice, IIT Patna, Computer Science, content creator, developer, Argon extension, productivity tools">
+    <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">
     <meta property="og:title" content="AROICE">
     <meta property="og:description" content="Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aroice.in">
+    <meta property="og:image" content="https://i.ibb.co/Gv8YWVdn/icon-modified.png">
+    <meta property="og:image:alt" content="AROICE Logo">
     <title>AROICE</title>
     <link rel="icon" type="image/x-icon" href="https://i.ibb.co/Gv8YWVdn/icon-modified.png">
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes revealWidth {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; visibility: hidden; }
+        }
+        
+        .intro-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeOut 0.6s forwards;
+            animation-delay: 2.2s;
+        }
+        
+        .intro-logo-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .intro-logo {
+            width: 80%;
+            height: 80%;
+            position: relative;
+            animation: fadeIn 0.6s forwards;
+            z-index: 2;
+        }
+        
+        .loading-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px solid rgba(4, 102, 200, 0.05);
+            border-top: 3px solid #0466c8;
+            border-right: 3px solid transparent;
+            animation: rotate 1.2s linear infinite;
+            z-index: 1;
+        }
+        
+        .content > * {
+            opacity: 0; /* Initial state */
+        }
+        
+        .logo-container { 
+            animation: slideUp 0.7s ease-out forwards;
+            animation-delay: 2.4s; 
+        }
+        
+        .title { 
+            animation: slideUp 0.7s ease-out forwards;
+            animation-delay: 2.6s; 
+        }
+        
+        .tagline {
+            animation: slideUp 0.7s ease-out forwards;
+            animation-delay: 2.8s;
+        }
+        
+        .coming-soon { 
+            animation: slideUp 0.7s ease-out forwards;
+            animation-delay: 3.0s; 
+        }
+        
+        .button-container { 
+            animation: slideUp 0.7s ease-out forwards;
+            animation-delay: 3.2s; 
+        }
+        
+        .footer { 
+            animation: fadeIn 0.7s ease-out forwards;
+            animation-delay: 3.4s; 
+        }
+    </style>
 </head>
 <body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
+    </button>
+
+    <div class="intro-overlay">
+        <div class="intro-logo-container">
+            <img src="https://i.ibb.co/Gv8YWVdn/icon-modified.png" alt="AROICE Logo" class="intro-logo">
+            <div class="loading-ring"></div>
+        </div>
+    </div>
+    
     <div class="background"></div>
     <div class="grid"></div>
     
     <div class="container">
         <div class="content">
             <div class="logo-container">
-                <a href="https://youtube.com/@aroice" target="_blank" class="logo-link">
-                    <img src="https://i.ibb.co/Gv8YWVdn/icon-modified.png" alt="AROICE Logo" class="logo">
+                <a href="https://youtube.com/@aroice" target="_blank" rel="noopener" class="logo-link">
+                    <img src="https://i.ibb.co/Gv8YWVdn/icon-modified.png" alt="AROICE Logo" class="logo" width="80" height="80">
                 </a>
             </div>
             
@@ -35,16 +159,59 @@
             <h2 class="coming-soon">Coming Soon</h2>
             
             <div class="button-container">
-                <a href="https://linktr.ee/aryantechie" target="_blank" class="button">
-                    <i class="fa-solid fa-link"></i> Linktree: Aryan Techie
+                <a href="https://linktr.ee/aryantechie" target="_blank" rel="noopener" class="button">
+                    <i class="fa-solid fa-link" aria-hidden="true"></i> Linktree: Aryan Techie
                 </a>
                 <a href="mailto:admin@aroice.in" class="button">
-                    <i class="fa-regular fa-envelope"></i> Contact: admin@aroice.in
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> Contact: admin@aroice.in
                 </a>
             </div>
             
-            <p class="footer">&copy; 2025 AROICE. <br> All rights reserved.</p>
+            <p class="footer">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
         </div>
     </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Update copyright year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        
+        // Check for saved theme preference or use device preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Apply theme based on saved preference or device preference
+        if (savedTheme === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else if (savedTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else if (prefersDarkScheme.matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+        
+        // Toggle theme when button is clicked
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
 </body>
 </html>
