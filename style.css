@@ -32,7 +32,7 @@
 }
 
 /* Optimize font loading with display swap */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap&font-display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -80,7 +80,7 @@ body {
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
                     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   z-index: -1;
-  will-change: background-position; /* Performance optimization */
+  will-change: background-position;
   animation: gridFloat 30s ease-in-out infinite alternate;
 }
 
@@ -107,7 +107,7 @@ body {
               background-color var(--transition-default);
   position: relative;
   overflow: hidden;
-  max-width: 650px; /* Increased from 600px to give more breathing room */
+  max-width: 650px;
   margin: 0 auto;
 }
 
@@ -177,10 +177,9 @@ body {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Fix the coming-soon text color in light mode */
 :root[data-theme="light"] .coming-soon {
-  color: #444444; /* Darker color for better visibility in light mode */
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust shadow for light mode */
+  color: #444444;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Button styling */
@@ -245,7 +244,6 @@ body {
   left: 100%;
 }
 
-/* Icon styling */
 .button i {
   margin-right: 10px;
   font-size: 18px;
@@ -263,26 +261,15 @@ body {
   color: var(--color-text-tertiary);
 }
 
-/* Animations for intro elements */
+/* Essential animations */
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
 
 @keyframes slideUp {
-  0% { 
-      opacity: 0; 
-      transform: translateY(20px); 
-  }
-  100% { 
-      opacity: 1; 
-      transform: translateY(0); 
-  }
-}
-
-@keyframes revealWidth {
-  from { width: 0; }
-  to { width: 100%; }
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes rotate {
@@ -341,11 +328,10 @@ body {
   z-index: 1;
 }
 
-/* Logo styling - ensure it displays correctly */
+/* Logo styling */
 .logo-container {
   margin-bottom: 10px;
   position: relative;
-  /* The opacity will be set by the inline animations */
 }
 
 .logo-link {
@@ -393,26 +379,50 @@ body {
   transform: rotate(-5deg);
 }
 
-/* Make sure content children start with the correct initial state for animations */
-.content > * {
-  opacity: 1; /* Changed from commented-out opacity: 0 */
-}
-
-/* NoScript message styling */
-.noscript-message {
+/* Theme toggle button */
+.theme-toggle {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  text-align: center;
-  padding: 15px;
-  z-index: 10000;
+  top: 20px;
+  right: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: var(--shadow-default);
+  transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.5s ease;
+  opacity: 0;
 }
 
-/* Add prefers-reduced-motion media query for accessibility */
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.theme-toggle i {
+  font-size: 18px;
+  color: var(--color-text-primary);
+  transition: transform 0.5s ease;
+}
+
+.theme-toggle:hover i {
+  transform: rotate(30deg);
+}
+
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  
   .grid {
     animation: none;
   }
@@ -425,35 +435,9 @@ body {
     transform: none;
     letter-spacing: normal;
   }
-  
-  .logo-link:hover {
-    transform: none;
-  }
-  
-  .logo-link:hover .logo {
-    transform: none;
-  }
-  
-  .intro-overlay {
-    animation-duration: 0.1s;
-    animation-delay: 0.5s;
-  }
-  
-  .loading-ring {
-    animation: none;
-  }
-  
-  .content > * {
-    opacity: 1;
-    animation: none !important;
-  }
-  
-  html {
-    scroll-behavior: auto;
-  }
 }
 
-/* Responsive improvements */
+/* Responsive styles */
 @media (max-width: 768px) {
   .title {
     font-size: 48px;
@@ -493,14 +477,14 @@ body {
   }
 }
 
-/* Print styles */
+/* Print styles - simplified */
 @media print {
   body {
     background: white;
     color: black;
   }
   
-  .background, .grid, .intro-overlay {
+  .background, .grid, .intro-overlay, .theme-toggle {
     display: none;
   }
   
@@ -509,54 +493,4 @@ body {
     background: white;
     border: 1px solid #ddd;
   }
-  
-  .title, .tagline, .coming-soon, .footer {
-    color: black;
-    text-shadow: none;
-  }
-  
-  .button {
-    border: 1px solid #ddd;
-    color: black;
-    background: white;
-  }
-  
-  .content > * {
-    opacity: 1 !important;
-    animation: none !important;
-  }
-}
-
-/* Theme toggle button */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: var(--shadow-default);
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.theme-toggle:hover {
-  transform: scale(1.1);
-  box-shadow: var(--shadow-hover);
-}
-
-.theme-toggle i {
-  font-size: 18px;
-  color: var(--color-text-primary);
-  transition: transform 0.5s ease;
-}
-
-.theme-toggle:hover i {
-  transform: rotate(30deg);
 }

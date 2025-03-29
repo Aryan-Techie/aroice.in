@@ -1,0 +1,28 @@
+name: Set Cache Headers
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  set-cache-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Setup GitHub Pages Headers
+        run: |
+          # Create _headers file for Netlify/GitHub Pages
+          echo "/*" > _headers
+          echo "  Cache-Control: public, max-age=31536000" >> _headers
+          
+          # Exceptions for HTML and the root path
+          echo "/index.html" >> _headers
+          echo "  Cache-Control: public, max-age=0, must-revalidate" >> _headers
+          echo "/" >> _headers
+          echo "  Cache-Control: public, max-age=0, must-revalidate" >> _headers
+          
+          # Move _headers to the output directory
+          mkdir -p _site
+          cp _headers _site/
