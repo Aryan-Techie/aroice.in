@@ -199,6 +199,7 @@ body {
   gap: 16px;
   align-items: center;
   margin-bottom: 20px;
+  -webkit-touch-callout: none; /* Prevent callout on iOS Safari */
 }
 
 .button {
@@ -217,6 +218,8 @@ body {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 /* Fix for light mode - ensure icons stay dark */
@@ -419,6 +422,8 @@ body {
   box-shadow: var(--shadow-default);
   transition: transform 0.3s ease, background-color 0.3s ease, opacity 0.5s ease;
   opacity: 0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 /* Fix for light mode theme toggle icons */
@@ -439,6 +444,16 @@ body {
 
 .theme-toggle:hover i {
   transform: rotate(30deg);
+}
+
+/* Global touch interface improvements */
+.logo-link, .button, .theme-toggle, [class*="icon"], i {
+  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
 }
 
 /* Accessibility */
