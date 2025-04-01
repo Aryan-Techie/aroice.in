@@ -1,7 +1,8 @@
 # 🌟 Welcome to Aroice.in 🌟
 
-## 🚀 About Us
-Aroice.in is the personal brand platform of Aryan Jangra (AryanTechie). The main website is currently under development - what you see now is a coming soon page. Stay tuned for the full launch!
+## 🚀 About Section
+Aroice.in is the personal brand platform of Aryan Jangra (AryanTechie). <br> <br> The main website is currently under development - what you see now is a coming soon page.
+<br> <br>Stay tuned for the full launch!
 
 ## 🔍 Current Status
 - 🏗️ **Under Development**: The main website is being built
