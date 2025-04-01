@@ -17,6 +17,10 @@
   --shadow-default: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 1px 1px rgba(255, 255, 255, 0.05);
   --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 2px 2px rgba(255, 255, 255, 0.07);
   --transition-default: 0.3s ease;
+
+  /* Accessibility variables */
+  --focus-outline: 3px solid var(--color-accent);
+  --transition-hover: 0.15s ease-in-out;
 }
 
 /* Light theme variables */
@@ -313,6 +317,13 @@ body {
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* Button states - pressed effect */
+.button:active {
+  transform: scale(0.98) translateY(-2px);
+  box-shadow: 0 2px 10px rgba(4, 102, 200, 0.1);
+  transition: all 0.1s ease;
+}
+
 .footer {
   margin-top: 40px;
   font-size: 14px;
@@ -486,7 +497,7 @@ body {
 
 /* Add focus styles for keyboard navigation accessibility */
 *:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: var(--focus-outline);
   outline-offset: 3px;
 }
 
@@ -532,6 +543,64 @@ body {
 /* Add aria-hidden handling for screen readers */
 [aria-hidden="true"] {
   display: none;
+}
+
+/* Micro-interaction styles */
+.pulse-on-hover:hover i {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateX(3px) scale(1.1);
+  }
+  50% {
+    transform: translateX(3px) scale(1.2);
+  }
+  100% {
+    transform: translateX(3px) scale(1.1);
+  }
+}
+
+/* Add cursor trail effect styles */
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.6;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  transition: transform 0.1s, opacity 0.5s;
+}
+
+/* Fix cursor trail for light mode */
+:root[data-theme="light"] .cursor-trail {
+  background: var(--color-accent-dark);
+  opacity: 0.8;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 0 2px rgba(4, 102, 200, 0.5));
+}
+
+/* Enhanced accessibility for keyboard users */
+.skip-to-content {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.3s ease;
+  opacity: 0;
+}
+
+.skip-to-content:focus {
+  top: 0;
+  opacity: 1;
 }
 
 /* Responsive styles */

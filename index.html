@@ -20,6 +20,44 @@
     <!-- Preload key resources with proper cache-control hints -->
     <link rel="preload" href="https://i.ibb.co/Gv8YWVdn/icon-modified.png" as="image" crossorigin="anonymous">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="script.js?v=1.0.0" as="script">
+    <link rel="preload" href="theme.js?v=1.0.0" as="script">
+    <link rel="preload" href="micro-interactions.js?v=1.0.0" as="script">
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Aryan Jangra",
+        "alternateName": "AROICE",
+        "url": "https://aroice.in",
+        "image": "https://i.ibb.co/Gv8YWVdn/icon-modified.png",
+        "sameAs": [
+            "https://youtube.com/@aroice",
+            "https://linktr.ee/aryantechie",
+            "https://blogs.aroice.in"
+        ],
+        "jobTitle": "Computer Science Student",
+        "worksFor": {
+            "@type": "Organization",
+            "name": "IIT Patna"
+        },
+        "description": "Computer Science student at IIT Patna, self-improvement content creator, and developer. Founder of Aroice, exploring the intersection of technology and content creation."
+    }
+    </script>
+    
+    <!-- Additional structured data for WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": "https://aroice.in",
+        "name": "AROICE",
+        "description": "Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator."
+    }
+    </script>
+    
     <!-- css style -->
     <style>
         @keyframes fadeIn {
@@ -132,12 +170,47 @@
             animation: fadeIn 0.7s ease-out forwards;
             animation-delay: 3.4s; 
         }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+            white-space: nowrap;
+        }
+        
+        /* Focus styles for keyboard navigation */
+        :focus-visible {
+            outline: 3px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+        
+        /* Skip to content link for screen readers */
+        .skip-to-content {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-accent);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s ease;
+        }
+        
+        .skip-to-content:focus {
+            top: 0;
+        }
     </style>
 </head>
 <body>
     <!-- Theme toggle button -->
-    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" tabindex="0" role="switch" aria-checked="false">
         <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
+        <span class="visually-hidden">Toggle dark/light mode</span>
     </button>
 
     <div class="intro-overlay">
@@ -151,32 +224,36 @@
     <div class="grid"></div>
     
     <div class="container">
-        <div class="content">
+        <div class="content" aria-live="polite">
             <div class="logo-container">
-                <a href="https://youtube.com/@aroice" target="_blank" rel="noopener" class="logo-link">
+                <a href="https://youtube.com/@aroice" target="_blank" rel="noopener" class="logo-link" aria-label="Visit AROICE YouTube Channel">
                     <img src="https://i.ibb.co/Gv8YWVdn/icon-modified.png" alt="AROICE Logo" class="logo" width="80" height="80">
                 </a>
             </div>
             
-            <h1 class="title">AROICE</h1>
-            <p class="tagline">Introspect.</p>
-            <h2 class="coming-soon">Coming Soon</h2>
+            <h1 class="title" tabindex="0">AROICE</h1>
+            <p class="tagline" tabindex="0">Introspect.</p>
+            <h2 class="coming-soon" tabindex="0">Coming Soon</h2>
             
-            <div class="button-container">
-                <a href="https://linktr.ee/aryantechie" target="_blank" rel="noopener" class="button">
-                    <i class="fa-solid fa-link" aria-hidden="true"></i> Linktree: Aryan Techie
+            <div class="button-container" role="navigation" aria-label="Main links">
+                <a href="https://linktr.ee/aryantechie" target="_blank" rel="noopener" class="button pulse-on-hover">
+                    <i class="fa-solid fa-link" aria-hidden="true"></i> <strong>Linktree</strong>: Aryan Techie
                 </a>
-                <a href="mailto:admin@aroice.in" class="button">
-                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> Contact: admin@aroice.in
+                <a href="https://blogs.aroice.in" target="_blank" rel="noopener" class="button pulse-on-hover">
+                    <i class="fa-solid fa-feather-pointed" aria-hidden="true"></i> <strong>Writings</strong>: Personal blog
+                </a>
+                <a href="mailto:admin@aroice.in" class="button pulse-on-hover">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> <strong>Contact</strong>: admin@aroice.in
                 </a>
             </div>
             
-            <p class="footer">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
+            <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
         </div>
     </div>
     
     <script src="script.js?v=1.0.0"></script>
     <script src="theme.js?v=1.0.0"></script>
+    <script src="micro-interactions.js?v=1.0.0"></script>
     <script>
         // Only keep the copyright year update here
         document.getElementById('current-year').textContent = new Date().getFullYear();
