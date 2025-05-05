@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AROICE Shop - Digital products and templates for mental performance, productivity, and self-improvement.">
+    <meta name="keywords" content="AROICE shop, NeuroScore, notion templates, mental performance, digital products">
+    <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">
+    <meta property="og:title" content="AROICE Shop">
+    <meta property="og:description" content="Digital products and templates for mental performance, productivity, and self-improvement.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aroice.in/shop">
+    <meta property="og:image" content="../images/logo.webp">
+    <meta property="og:image:alt" content="AROICE Logo">
+    <title>AROICE Shop</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
+    <link rel="stylesheet" href="../style.css?v=1.0.0">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <!-- Preload key resources with proper cache-control hints -->
+    <link rel="preload" href="../images/logo.webp" as="image" crossorigin="anonymous">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="../script.js?v=1.0.0" as="script">
+    <link rel="preload" href="../theme.js?v=1.0.0" as="script">
+    <link rel="preload" href="../micro-interactions.js?v=1.0.0" as="script">
+
+    <!-- Shop-specific styles -->
+    <style>
+        .shop-intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .shop-description {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--color-text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            padding: 8px 20px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all var(--transition-default);
+            color: var(--color-text-primary);
+        }
+        
+        .category-tab:hover, .category-tab.active {
+            background: rgba(4, 102, 200, 0.2);
+            border-color: var(--color-border-hover);
+        }
+        
+        .category-tab.active {
+            font-weight: 600;
+            color: var(--color-accent);
+            box-shadow: 0 0 10px rgba(4, 102, 200, 0.3);
+        }
+        
+        /* Dark mode specific styles for category tabs */
+        :root[data-theme="dark"] .category-tab,
+        :root:not([data-theme="light"]) .category-tab {
+            background: rgba(15, 15, 15, 0.6);
+            color: var(--color-text-primary);
+        }
+        
+        :root[data-theme="dark"] .category-tab:hover,
+        :root:not([data-theme="light"]) .category-tab:hover,
+        :root[data-theme="dark"] .category-tab.active,
+        :root:not([data-theme="light"]) .category-tab.active {
+            background: rgba(4, 102, 200, 0.2);
+            border-color: rgba(4, 102, 200, 0.6);
+        }
+        
+        :root[data-theme="dark"] .category-tab.active,
+        :root:not([data-theme="light"]) .category-tab.active {
+            color: #50a2ff;
+            box-shadow: 0 0 15px rgba(4, 102, 200, 0.4);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        
+        .product-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            transition: transform var(--transition-default),
+                      box-shadow var(--transition-default),
+                      border-color var(--transition-default);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-border-hover);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .product-image-container {
+            width: 100%;
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-details {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--color-text-primary);
+        }
+        
+        .product-description {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 15px;
+        }
+        
+        .product-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .cta-button {
+            padding: 10px;
+            border-radius: var(--border-radius-medium);
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all var(--transition-default);
+            text-decoration: none;
+            color: white;
+        }
+        
+        .cta-primary {
+            background-color: var(--color-accent);
+        }
+        
+        .cta-primary:hover {
+            background-color: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+        
+        .cta-secondary {
+            background-color: #333;
+        }
+        
+        .cta-secondary:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            z-index: 2;
+        }
+        
+        .badge-new {
+            background-color: var(--color-accent);
+        }
+        
+        .badge-coming-soon {
+            background-color: #f59e0b;
+        }
+        
+        .product-card.coming-soon {
+            opacity: 0.85;
+        }
+        
+        .notify-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .notify-input {
+            padding: 10px;
+            border-radius: var(--border-radius-medium);
+            border: 1px solid var(--color-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-text-primary);
+        }
+        
+        .notify-button {
+            padding: 10px;
+            border-radius: var(--border-radius-medium);
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-default);
+            font-weight: 600;
+        }
+        
+        .notify-button:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-medium);
+            padding: 10px 15px;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: all var(--transition-default);
+            z-index: 100;
+            box-shadow: var(--shadow-default);
+        }
+        
+        .back-link:hover {
+            transform: translateY(-3px);
+            border-color: var(--color-border-hover);
+            box-shadow: var(--shadow-hover);
+            color: var(--color-accent);
+        }
+        
+        .back-link i {
+            margin-right: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-link:hover i {
+            transform: translateX(-3px);
+        }
+        
+        .view-details {
+            text-decoration: none;
+            color: var(--color-accent);
+            font-weight: 600;
+            transition: color var(--transition-default);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .view-details:hover {
+            color: var(--color-accent-dark);
+        }
+        
+        .view-details i {
+            font-size: 12px;
+            transition: transform var(--transition-default);
+        }
+        
+        .view-details:hover i {
+            transform: translateX(3px);
+        }
+        
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Content width modification for shop page */
+        .content {
+            max-width: 1200px;
+        }
+    </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GF8PQLVEF2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GF8PQLVEF2');
+</script>
+
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" tabindex="0" role="switch" aria-checked="false">
+        <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
+        <span class="visually-hidden"></span>
+    </button>
+
+<!-- <div class="intro-overlay">
+        <div class="intro-logo-container">
+            <img src="../images/logo.webp" alt="AROICE Logo" class="intro-logo">
+            <div class="loading-ring"></div>
+        </div>
+    </div>
+ -->
+
+    <div class="background"></div>
+    <div class="grid"></div>
+    
+    <div class="container">
+        <div class="content" aria-live="polite">
+            <a href="../index.html" class="back-link pulse-on-hover">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+<!--             
+            <div class="logo-container">
+                <a href="https://youtube.com/@aroice" target="_blank" rel="noopener" class="logo-link" aria-label="Visit AROICE YouTube Channel">
+                    <img src="../images/logo.webp" alt="AROICE Logo" class="logo" width="80" height="80">
+                </a>
+            </div> -->
+            
+            <div class="shop-intro">
+                <h1 class="title" tabindex="0" style="margin-top: 0.5em;">AROICE Shop</h1>
+                <p class="tagline" tabindex="0">Tools for those who think differently.</p>
+                <p class="shop-description">Explore our collection of thoughtfully <br> designed digital products to <br> optimize your mind, <br> enhance your productivity, <br> and improve your daily life.</p>
+            </div>
+            
+            <!-- Category navigation -->
+            <div class="category-tabs" role="tablist">
+                <button class="category-tab active" data-category="all" role="tab" aria-selected="true">All Products</button>
+                <button class="category-tab" data-category="notion-templates" role="tab" aria-selected="false">Notion Templates</button>
+                <button class="category-tab" data-category="courses" role="tab" aria-selected="false">Courses</button>
+            </div>
+            
+            <!-- Products grid -->
+            <div class="products-grid">
+                <!-- NeuroScore Product Card -->
+                <div class="product-card" data-category="notion-templates">
+                    <div class="product-badge badge-new">New</div>
+                    <div class="product-image-container">
+                        <img src="p1/neuroscore.png" alt="NeuroScore Notion Template" class="product-image">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="product-title">NeuroScore</h3>
+                        <p class="product-description">Mental Performance Tracker</p>
+                        <!-- <p class="product-price">₹149</p> -->
+                        <div class="product-cta">
+                            <!-- <a href="https://www.notion.com/templates/neuroscore" target="_blank" class="view-details">
+                                View Details <i class="fas fa-chevron-right"></i>
+                            </a> -->
+                            <div style="display: flex; gap: 10px; margin-top: 10px; justify-content: center;">
+                                <a href="https://pages.razorpay.com/neuroscore" target="_blank" class="cta-button cta-primary">
+                                    <i class="fas fa-credit-card"></i> Get Now
+                                </a>
+                                <a href="https://www.notion.com/templates/neuroscore" target="_blank" class="cta-button cta-secondary">
+                                    <i class="fas fa-info-circle"></i> Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--             
+            <div class="button-container" role="navigation" aria-label="Main links" style="margin-top: 40px;">
+                <a href="mailto:shop@aroice.in" class="button pulse-on-hover">
+                    <i class="fa-regular fa-envelope" aria-hidden="true"></i> <strong>Contact Shop Support</strong>: shop@aroice.in
+                </a>
+                <a href="../index.html" class="button pulse-on-hover">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i> <strong>Return to Main Site</strong>
+                </a>
+            </div>
+             -->
+            <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
+            <div class="legal-links">
+                <a href="../privacy.html" class="legal-link">Privacy Policy</a> |
+                <a href="../terms.html" class="legal-link">Terms</a> 
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script.js?v=1.0.0"></script>
+    <script src="../theme.js?v=1.0.0"></script>
+    <script src="../micro-interactions.js?v=1.0.0"></script>
+    <script>
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Category filtering
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active state
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                categoryTabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                
+                const category = tab.dataset.category;
+                
+                // Filter products
+                productCards.forEach(product => {
+                    if (category === 'all' || product.dataset.category === category) {
+                        product.style.display = 'flex';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
