@@ -21,6 +21,7 @@
             line-height: 1;
             background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: none;
             position: relative;
@@ -87,11 +88,17 @@
             opacity: 0;
             transform: scale(0.8);
             transition: opacity 0.5s ease, transform 0.5s ease;
+            max-height: 0;
+            margin: 0 auto;
+            border: 0;
         }
         
         .maze-container.visible {
             opacity: 1;
             transform: scale(1);
+            max-height: 240px;
+            margin: 20px auto;
+            border: 1px solid var(--color-border);
         }
         
         .toggle-game {
@@ -112,11 +119,10 @@
             color: var(--color-text-tertiary);
             margin-top: 10px;
             display: none;
-        }
-        
-        .maze-help.visible {
-            display: block;
-            animation: fadeIn 0.5s ease forwards;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
         }
         
         .error-particles {
@@ -177,13 +183,42 @@
         :root[data-theme="light"] .error-particles .particle {
             background: var(--color-accent-dark);
         }
+
+        /* Style for legal links in footer */
+        .legal-links {
+            margin-top: 5px;
+            font-size: 14px;
+        }
+        
+        .legal-link {
+            color: #676767; /* Purple color as shown in the screenshot */
+            text-decoration: none;
+            transition: color 0.3s ease, text-decoration 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .legal-link:hover {
+            text-decoration: underline;
+            color: #676767; /* Slightly lighter purple on hover */
+        }
     </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GF8PQLVEF2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GF8PQLVEF2');
+</script>
+
 </head>
 <body>
     <!-- Theme toggle button -->
     <button class="theme-toggle" aria-label="Toggle dark/light mode" tabindex="0" role="switch" aria-checked="false">
         <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
-        <span class="visually-hidden">Toggle dark/light mode</span>
+        <span class="visually-hidden"></span>
     </button>
 
     <div class="background"></div>
@@ -199,7 +234,7 @@
             
             <h1 class="error-code" tabindex="0">404</h1>
             <h2 class="error-title" tabindex="0">Page Not Found</h2>
-            <p class="error-message" tabindex="0">The path you're seeking seems to have vanished into the digital void.</p>
+            <p class="error-message" tabindex="0">The path you're seeking <br> seems to have vanished into the digital void.</p>
             
             <div class="button-container" role="navigation" aria-label="Main links">
                 <a href="/" class="button home-button pulse-on-hover">
@@ -222,6 +257,10 @@
             <div class="error-particles" id="particles"></div>
             
             <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
+            <div class="legal-links">
+                <a href="terms.html" class="legal-link">Terms</a> | 
+                <a href="privacy.html" class="legal-link">Privacy Policy</a>
+            </div>
         </div>
     </div>
     

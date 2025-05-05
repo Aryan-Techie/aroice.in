@@ -21,6 +21,10 @@
   /* Accessibility variables */
   --focus-outline: 3px solid var(--color-accent);
   --transition-hover: 0.15s ease-in-out;
+  
+  /* Legal links color */
+  --color-legal-links: #8e44ad;
+  --color-legal-links-hover: #9b59b6;
 }
 
 /* Light theme variables */
@@ -239,6 +243,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   -webkit-touch-callout: none; /* Prevent callout on iOS Safari */
+  width: 100%; /* Ensure container takes full width */
 }
 
 .button {
@@ -253,7 +258,8 @@ body {
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
   box-shadow: 0 0 0 rgba(4, 102, 200, 0);
-  min-width: 220px;
+  width: 100%; /* Changed from min-width to width */
+  max-width: 400px; /* Added max-width to keep buttons from getting too wide */
   position: relative;
   overflow: hidden;
   z-index: 1;
@@ -666,4 +672,26 @@ body {
     background: white;
     border: 1px solid #ddd;
   }
+}
+
+/* for legal links - customs style for matching footer */
+.legal-links {
+  margin-top: 5px;
+  font-size: 12px;
+  animation: fadeIn 0.7s ease-out forwards;
+  animation-delay: 3.6s;
+  opacity: 0;
+  color: var(--color-text-tertiary);
+}
+
+.legal-link {
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+  margin: 0 5px;
+}
+    
+.legal-link:hover {
+  text-decoration: none;
+  color: var(--color-text-secondary);
 }
