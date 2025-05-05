@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="404 - Page Not Found | AROICE">
+    <title>404 - Page Not Found | AROICE</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.webp">
+    <link rel="stylesheet" href="style.css?v=1.0.0">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <!-- Preload key resources -->
+    <link rel="preload" href="images/logo.webp" as="image" crossorigin="anonymous">
+
+    <style>
+        /* 404-specific styles */
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+            position: relative;
+            animation: glitch 1s infinite alternate-reverse;
+        }
+        
+        @keyframes glitch {
+            0% {
+                transform: skewX(0deg);
+                text-shadow: 2px 2px 0 rgba(4, 102, 200, 0.3);
+            }
+            20% {
+                transform: skewX(0deg);
+                text-shadow: 2px 2px 0 rgba(4, 102, 200, 0.3);
+            }
+            21% {
+                transform: skewX(10deg);
+                text-shadow: -2px 0 0 rgba(4, 102, 200, 0.5), 2px 2px 0 rgba(255, 0, 0, 0.2);
+            }
+            25% {
+                transform: skewX(0deg);
+                text-shadow: 2px 2px 0 rgba(4, 102, 200, 0.3);
+            }
+            35% {
+                transform: skewX(-5deg);
+                text-shadow: -2px 0 0 rgba(4, 102, 200, 0.5), 2px 2px 0 rgba(255, 0, 0, 0.2);
+            }
+            40% {
+                transform: skewX(0deg);
+                text-shadow: 2px 2px 0 rgba(4, 102, 200, 0.3);
+            }
+            100% {
+                transform: skewX(0deg);
+                text-shadow: 2px 2px 0 rgba(4, 102, 200, 0.3);
+            }
+        }
+        
+        .error-title {
+            font-size: 32px;
+            margin: 15px 0;
+        }
+        
+        .error-message {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--color-text-secondary);
+        }
+        
+        .home-button {
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        /* Maze game container */
+        .maze-container {
+            width: 240px;
+            height: 240px;
+            margin: 20px auto;
+            position: relative;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        
+        .maze-container.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .toggle-game {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .toggle-game:hover {
+            color: var(--color-accent);
+        }
+        
+        .maze-help {
+            font-size: 13px;
+            color: var(--color-text-tertiary);
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .maze-help.visible {
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .error-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: drift 3s infinite ease-in-out;
+        }
+        
+        @keyframes drift {
+            0% {
+                opacity: 0;
+                transform: translate(0, 0);
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--x), var(--y));
+            }
+        }
+        
+        /* Space animation effect for the 404 container */
+        .floating-effect {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Light theme adjustments */
+        :root[data-theme="light"] .error-particles .particle {
+            background: var(--color-accent-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" tabindex="0" role="switch" aria-checked="false">
+        <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
+        <span class="visually-hidden">Toggle dark/light mode</span>
+    </button>
+
+    <div class="background"></div>
+    <div class="grid"></div>
+    
+    <div class="container">
+        <div class="content floating-effect" aria-live="polite">
+            <div class="logo-container">
+                <a href="https://aroice.in" class="logo-link" aria-label="Return to AROICE Home">
+                    <img src="images/logo.webp" alt="AROICE Logo" class="logo" width="80" height="80">
+                </a>
+            </div>
+            
+            <h1 class="error-code" tabindex="0">404</h1>
+            <h2 class="error-title" tabindex="0">Page Not Found</h2>
+            <p class="error-message" tabindex="0">The path you're seeking seems to have vanished into the digital void.</p>
+            
+            <div class="button-container" role="navigation" aria-label="Main links">
+                <a href="/" class="button home-button pulse-on-hover">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i> <strong>Return Home</strong>
+                </a>
+            </div>
+            
+            <p class="toggle-game" tabindex="0" id="toggle-game">
+                <i class="fa-solid fa-gamepad" aria-hidden="true"></i> Find your way out of the 404 maze
+            </p>
+            
+            <div class="maze-container" id="maze-container">
+                <canvas id="maze-game" width="240" height="240"></canvas>
+            </div>
+            
+            <p class="maze-help" id="maze-help">
+                <i class="fa-solid fa-keyboard" aria-hidden="true"></i> Use arrow keys or tap to navigate to the exit
+            </p>
+            
+            <div class="error-particles" id="particles"></div>
+            
+            <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script src="theme.js?v=1.0.0"></script>
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Create particle effect
+        const particlesContainer = document.getElementById('particles');
+        const particleCount = 15;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random positions and animations
+            const x = Math.random() * 300 - 150;
+            const y = Math.random() * 300 - 150;
+            const delay = Math.random() * 2;
+            const size = Math.random() * 6 + 4;
+            
+            particle.style.setProperty('--x', `${x}px`);
+            particle.style.setProperty('--y', `${y}px`);
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            particlesContainer.appendChild(particle);
+        }
+        
+        // Toggle maze game
+        const toggleGame = document.getElementById('toggle-game');
+        const mazeContainer = document.getElementById('maze-container');
+        const mazeHelp = document.getElementById('maze-help');
+        
+        toggleGame.addEventListener('click', function() {
+            mazeContainer.classList.toggle('visible');
+            mazeHelp.classList.toggle('visible');
+            
+            if (mazeContainer.classList.contains('visible')) {
+                initMazeGame();
+                toggleGame.innerHTML = '<i class="fa-solid fa-xmark" aria-hidden="true"></i> Hide maze game';
+            } else {
+                toggleGame.innerHTML = '<i class="fa-solid fa-gamepad" aria-hidden="true"></i> Find your way out of the 404 maze';
+            }
+        });
+        
+        // Simple maze game
+        function initMazeGame() {
+            const canvas = document.getElementById('maze-game');
+            const ctx = canvas.getContext('2d');
+            
+            const cellSize = 20;
+            const rows = 12;
+            const cols = 12;
+            
+            // Define colors based on theme
+            function getColors() {
+                const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+                return {
+                    background: isDark ? '#030303' : '#f5f5f5',
+                    wall: isDark ? '#333333' : '#999999',
+                    player: isDark ? '#0466c8' : '#0466c8',
+                    exit: isDark ? '#4caf50' : '#2e7d32'
+                };
+            }
+            
+            let colors = getColors();
+            
+            // Create a simple maze
+            const maze = [];
+            for (let i = 0; i < rows; i++) {
+                maze[i] = [];
+                for (let j = 0; j < cols; j++) {
+                    if (i === 0 || j === 0 || i === rows - 1 || j === cols - 1) {
+                        maze[i][j] = 1; // Border walls
+                    } else {
+                        // Random walls
+                        maze[i][j] = Math.random() < 0.3 ? 1 : 0;
+                    }
+                }
+            }
+            
+            // Ensure start and end are clear
+            maze[1][1] = 0; // Start
+            maze[rows-2][cols-2] = 0; // End
+            
+            // Clear a path from start
+            for (let i = 1; i < 3; i++) {
+                maze[1][i] = 0;
+                maze[i][1] = 0;
+            }
+            
+            // Player position
+            let playerPos = { x: 1, y: 1 };
+            const exitPos = { x: cols-2, y: rows-2 };
+            
+            // Draw the maze
+            function drawMaze() {
+                colors = getColors();
+                
+                ctx.fillStyle = colors.background;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < rows; i++) {
+                    for (let j = 0; j < cols; j++) {
+                        if (maze[i][j] === 1) {
+                            ctx.fillStyle = colors.wall;
+                            ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                        }
+                    }
+                }
+                
+                // Draw exit
+                ctx.fillStyle = colors.exit;
+                ctx.fillRect(exitPos.x * cellSize, exitPos.y * cellSize, cellSize, cellSize);
+                
+                // Draw player
+                ctx.fillStyle = colors.player;
+                ctx.beginPath();
+                ctx.arc(
+                    playerPos.x * cellSize + cellSize / 2, 
+                    playerPos.y * cellSize + cellSize / 2, 
+                    cellSize / 2 - 2, 
+                    0, 
+                    Math.PI * 2
+                );
+                ctx.fill();
+            }
+            
+            // Move player
+            function movePlayer(dx, dy) {
+                const newX = playerPos.x + dx;
+                const newY = playerPos.y + dy;
+                
+                if (newX >= 0 && newX < cols && newY >= 0 && newY < rows && maze[newY][newX] === 0) {
+                    playerPos.x = newX;
+                    playerPos.y = newY;
+                    drawMaze();
+                    
+                    // Check if reached exit
+                    if (playerPos.x === exitPos.x && playerPos.y === exitPos.y) {
+                        setTimeout(() => {
+                            alert('You found your way out! Returning home...');
+                            window.location.href = '/';
+                        }, 300);
+                    }
+                }
+            }
+            
+            // Handle key presses
+            window.addEventListener('keydown', function(e) {
+                if (!mazeContainer.classList.contains('visible')) return;
+                
+                switch(e.key) {
+                    case 'ArrowUp':
+                        movePlayer(0, -1);
+                        e.preventDefault();
+                        break;
+                    case 'ArrowDown':
+                        movePlayer(0, 1);
+                        e.preventDefault();
+                        break;
+                    case 'ArrowLeft':
+                        movePlayer(-1, 0);
+                        e.preventDefault();
+                        break;
+                    case 'ArrowRight':
+                        movePlayer(1, 0);
+                        e.preventDefault();
+                        break;
+                }
+            });
+            
+            // Handle touch/clicks for mobile
+            canvas.addEventListener('click', function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+                
+                // Calculate the cell clicked
+                const cellX = Math.floor(clickX / cellSize);
+                const cellY = Math.floor(clickY / cellSize);
+                
+                // Determine direction based on click position relative to player
+                const dx = Math.sign(cellX - playerPos.x);
+                const dy = Math.sign(cellY - playerPos.y);
+                
+                // Move in only one direction at a time (prioritize horizontal)
+                if (dx !== 0) {
+                    movePlayer(dx, 0);
+                } else if (dy !== 0) {
+                    movePlayer(0, dy);
+                }
+            });
+            
+            // Update on theme change
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'data-theme') {
+                        drawMaze();
+                    }
+                });
+            });
+            
+            observer.observe(document.documentElement, { attributes: true });
+            
+            // Initial draw
+            drawMaze();
+        }
+    </script>
+</body>
+</html>
