@@ -108,6 +108,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         }
         
         .product-card:hover {
@@ -322,6 +323,78 @@
         .content {
             max-width: 1200px;
         }
+
+        /* Trust badges and security indicators */
+        .shop-trust-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        
+        .shop-trust-badge {
+            display: flex;
+            align-items: center;
+            padding: 6px 12px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-medium);
+            color: var(--color-text-secondary);
+            font-size: 13px;
+            gap: 8px;
+            box-shadow: var(--shadow-default);
+        }
+        
+        .shop-trust-badge i {
+            color: #2e7d32; /* Trust green */
+            font-size: 14px;
+        }
+        
+        /* Security badges for product cards */
+        .security-indicator {
+            position: absolute;
+            bottom: 12px;
+            right: 15px;
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .security-indicator i {
+            color: #2e7d32;
+            font-size: 12px;
+        }
+        
+        /* Light theme adjustments */
+        :root[data-theme="light"] .shop-trust-badge {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Product cards with enhanced trust appearance */
+        .product-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            transition: transform var(--transition-default),
+                      box-shadow var(--transition-default),
+                      border-color var(--transition-default);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        :root[data-theme="light"] .product-card {
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
     </style>
 
 <!-- Google tag (gtag.js) -->
@@ -373,6 +446,19 @@
 
             </div>
             
+            <!-- Trust badges -->
+            <div class="shop-trust-indicators">
+                <div class="shop-trust-badge">
+                    <i class="fas fa-lock"></i> Secure Checkout
+                </div>
+                <div class="shop-trust-badge">
+                    <i class="fas fa-shield-alt"></i> Trusted by Thousands
+                </div>
+                <div class="shop-trust-badge">
+                    <i class="fas fa-thumbs-up"></i> 100% Satisfaction Guarantee
+                </div>
+            </div>
+            
             <!-- Category navigation -->
             <div class="category-tabs" role="tablist">
                 <button class="category-tab active" data-category="all" role="tab" aria-selected="true">All Products</button>
@@ -405,6 +491,9 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="security-indicator">
+                            <i class="fas fa-lock"></i> Secure
+                        </div>
                     </div>
                 </div>
             </div>
@@ -421,7 +510,8 @@
             <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
             <div class="legal-links">
                 <a href="../privacy.html" class="legal-link">Privacy Policy</a> |
-                <a href="../terms.html" class="legal-link">Terms</a> 
+                <a href="../terms.html" class="legal-link">Terms</a> |
+                <a href="../refund.html" class="legal-link">Refund Policy</a>
             </div>
         </div>
     </div>

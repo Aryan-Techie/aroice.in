@@ -5,17 +5,17 @@
   --color-text-primary: #ffffff;
   --color-text-secondary: #b3b3b3;
   --color-text-tertiary: #666666;
-  --color-accent: #0466c8;
-  --color-accent-dark: #023e7d;
-  --color-accent-light: #0353a4;
-  --color-surface: rgba(15, 15, 15, 0.5);
-  --color-surface-hover: rgba(15, 15, 15, 0.55);
-  --color-border: rgba(255, 255, 255, 0.12);
-  --color-border-hover: rgba(4, 102, 200, 0.8);
-  --border-radius-large: 24px;
-  --border-radius-medium: 12px;
-  --shadow-default: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 1px 1px rgba(255, 255, 255, 0.05);
-  --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 2px 2px rgba(255, 255, 255, 0.07);
+  --color-accent: #0070ba; /* Changed from #0466c8 to PayPal blue for trust */
+  --color-accent-dark: #00498e; /* Darker PayPal blue */
+  --color-accent-light: #1a8ddd; /* Lighter PayPal blue */
+  --color-surface: rgba(15, 15, 15, 0.65); /* Increased opacity for more solidity */
+  --color-surface-hover: rgba(15, 15, 15, 0.75);
+  --color-border: rgba(255, 255, 255, 0.15);
+  --color-border-hover: rgba(0, 112, 186, 0.9);
+  --border-radius-large: 16px; /* Reduced from 24px for more professional look */
+  --border-radius-medium: 10px; /* Reduced from 12px */
+  --shadow-default: 0 10px 25px rgba(0, 0, 0, 0.25), inset 0 0 1px 1px rgba(255, 255, 255, 0.07);
+  --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.35), inset 0 0 2px 2px rgba(255, 255, 255, 0.1);
   --transition-default: 0.3s ease;
 
   /* Accessibility variables */
@@ -23,20 +23,23 @@
   --transition-hover: 0.15s ease-in-out;
   
   /* Legal links color */
-  --color-legal-links: #8e44ad;
-  --color-legal-links-hover: #9b59b6;
+  --color-legal-links: #5d93c0; /* Changed to a blue tone for trust */
+  --color-legal-links-hover: #7eb3e6;
 }
 
 /* Light theme variables */
 :root[data-theme="light"] {
-  --color-background: #f5f5f5;
-  --color-background-gradient-end: #e0e0e0;
-  --color-text-primary: #121212;
-  --color-text-secondary: #333333;
-  --color-text-tertiary: #555555;
-  --color-surface: rgba(255, 255, 255, 0.8);
-  --color-surface-hover: rgba(255, 255, 255, 0.9);
+  --color-background: #f7f9fc; /* More professional light blue tint */
+  --color-background-gradient-end: #e8eef7;
+  --color-text-primary: #111827;
+  --color-text-secondary: #374151;
+  --color-text-tertiary: #6b7280;
+  --color-surface: rgba(255, 255, 255, 0.85);
+  --color-surface-hover: rgba(255, 255, 255, 0.95);
   --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-hover: rgba(0, 112, 186, 0.7);
+  --shadow-default: 0 10px 25px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12), 0 0 2px rgba(0, 0, 0, 0.15);
 }
 
 /* Remove render-blocking font import and use font-display: swap in the global styles */
@@ -249,15 +252,15 @@ body {
 .button {
   display: inline-block;
   padding: 15px 30px;
-  background: rgba(4, 102, 200, 0.1);
-  border: 1px solid rgba(4, 102, 200, 0.3);
+  background: rgba(0, 112, 186, 0.1); /* Updated to match new accent color */
+  border: 1px solid rgba(0, 112, 186, 0.3); /* Updated to match new accent color */
   border-radius: var(--border-radius-medium);
   color: var(--color-text-primary);
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
-  box-shadow: 0 0 0 rgba(4, 102, 200, 0);
+  box-shadow: 0 0 0 rgba(0, 112, 186, 0); /* Updated to match new accent color */
   width: 100%; /* Changed from min-width to width */
   max-width: 400px; /* Added max-width to keep buttons from getting too wide */
   position: relative;
