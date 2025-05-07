@@ -107,13 +107,13 @@
         
         /* Improved platform icon styling */
         .platform-icon {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 28px;
+            margin-bottom: 25px;
+            font-size: 38px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
@@ -193,16 +193,28 @@
             color: #0070ba; /* Razorpay blue */
         }
         
+        /* Updated GitHub icon styling with theme-specific colors */
         .platform-github .platform-icon {
-            color: #24292f; /* GitHub dark */
+            color: #24292f; /* GitHub dark - for light mode */
+        }
+        
+        :root[data-theme="dark"] .platform-github .platform-icon,
+        :root:not([data-theme="light"]) .platform-github .platform-icon {
+            color: #c9d1d9; /* Light gray for better visibility in dark mode */
         }
         
         .platform-bmac .platform-icon {
             color: #ffdd00; /* BMAC yellow */
         }
         
+        /* Updated Cryptocurrency icon styling with theme-specific colors */
         .platform-crypto .platform-icon {
-            color: #3c3c3d; /* Ethereum gray */
+            color: #3c3c3d; /* Ethereum gray - for light mode */
+        }
+        
+        :root[data-theme="dark"] .platform-crypto .platform-icon,
+        :root:not([data-theme="light"]) .platform-crypto .platform-icon {
+            color: #dfe2e5; /* Light gray for better visibility in dark mode */
         }
         
         /* Badge styles with improved positioning */
