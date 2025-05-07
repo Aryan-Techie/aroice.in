@@ -37,7 +37,7 @@
             padding: 10px 15px;
             color: var(--color-text-primary);
             text-decoration: none;
-            transition: all var(--transition-default);
+            transition: all 0.25s ease;
             z-index: 100;
             box-shadow: var(--shadow-default);
         }
@@ -76,19 +76,20 @@
             font-weight: 500;
         }
 
-        /* Platform cards layout with improved psychological design */
+        /* Redesigned platform cards layout for better UX */
         .platform-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 40px;
+            margin: 0 auto 40px;
+            max-width: 1100px;
         }
         
         .platform-card {
             background: var(--color-surface);
             border: 1px solid var(--color-border);
-            border-radius: var(--border-radius-large);
-            padding: 25px 22px;
+            border-radius: 16px;
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -104,18 +105,15 @@
             box-shadow: var(--shadow-hover);
         }
         
-        /* Enhance platform icon with psychological color theory */
+        /* Improved platform icon styling */
         .platform-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            background: rgba(4, 102, 200, 0.08);
-            color: var(--color-accent);
-            font-size: 24px;
+            margin-bottom: 20px;
+            font-size: 28px;
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
@@ -124,38 +122,37 @@
         }
         
         .platform-name {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 600;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             color: var(--color-text-primary);
         }
         
         .platform-description {
             color: var(--color-text-secondary);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
             flex-grow: 1;
         }
         
-        /* Improved button styling for better trust */
+        /* Redesigned buttons for better conversion */
         .platform-link {
             padding: 14px 20px;
             background: var(--color-accent);
             color: white;
-            border-radius: var(--border-radius-medium);
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s ease;
+            font-size: 15px;
+            transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 85%;
+            width: 90%;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(4, 102, 200, 0.2);
-            margin-bottom: 20px; /* Add space for the security badge */
+            box-shadow: 0 4px 12px rgba(4, 102, 200, 0.2);
         }
         
         .platform-link::after {
@@ -175,61 +172,70 @@
         .platform-link:hover {
             background: var(--color-accent-dark);
             transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(4, 102, 200, 0.3);
+            box-shadow: 0 6px 15px rgba(4, 102, 200, 0.3);
         }
         
         .platform-link:hover::after {
             left: 100%;
         }
         
-        .platform-link i {
-            margin-right: 8px;
+        .platform-link:active {
+            transform: scale(0.98);
         }
         
-        /* Platform specific styling with meaningful color psychology */
+        .platform-link i {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        
+        /* Custom styling for each platform */
         .platform-razorpay .platform-icon {
-            background: rgba(2, 130, 252, 0.1);
-            color: #0070ba; /* Deep blue: trust, security, reliability */
+            color: #0070ba; /* Razorpay blue */
         }
         
         .platform-github .platform-icon {
-            background: rgba(36, 41, 47, 0.1);
-            color: #24292f; /* Dark gray: sophistication, professionalism */
+            color: #24292f; /* GitHub dark */
         }
         
         .platform-bmac .platform-icon {
-            background: rgba(255, 221, 0, 0.1);
-            color: #ffdd00; /* Yellow: optimism, clarity */
+            color: #ffdd00; /* BMAC yellow */
         }
         
-        .platform-kofi .platform-icon {
-            background: rgba(41, 171, 224, 0.1);
-            color: #29abe0; /* Light blue: peace, openness */
+        .platform-crypto .platform-icon {
+            color: #3c3c3d; /* Ethereum gray */
         }
         
-        /* Badge styles with improved visual hierarchy */
+        /* Badge styles with improved positioning */
         .platform-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 11px;
+            top: 18px;
+            right: 18px;
+            font-size: 12px;
             font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 12px;
+            padding: 5px 12px;
+            border-radius: 20px;
             background: var(--color-accent);
             color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
         
         .badge-preferred {
-            background: linear-gradient(90deg, #0282fc, #0466c8);
+            background: linear-gradient(90deg, #2563EB, #1E40AF);
+        }
+        
+        .badge-crypto {
+            background: linear-gradient(90deg, #8B5CF6, #6D28D9);
+        }
+        
+        .badge-github {
+            background: linear-gradient(90deg, #475569, #334155);
         }
         
         .badge-new {
-            background: linear-gradient(90deg, #00c853, #4caf50);
+            background: linear-gradient(90deg, #10B981, #059669);
         }
         
-        /* Special message with psychological framing */
+        /* Special message styling */
         .special-message {
             background: linear-gradient(135deg, rgba(4, 102, 200, 0.05), rgba(4, 102, 200, 0.1));
             border-left: 3px solid var(--color-accent);
@@ -247,36 +253,7 @@
             font-weight: 600;
         }
         
-        .impact-icon {
-            font-size: 20px;
-            margin-right: 8px;
-            color: var(--color-accent);
-            vertical-align: middle;
-        }
-        
-        .message-points {
-            padding: 0;
-            margin: 15px 0 0 0;
-            list-style-type: none;
-        }
-        
-        .message-points li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .message-points li:last-child {
-            margin-bottom: 0;
-        }
-        
-        .message-points i {
-            color: var(--color-accent);
-            margin-right: 10px;
-            margin-top: 3px;
-        }
-
-        /* Visual cue showing donation impact */
+        /* Visual divider styling */
         .impact-wave {
             position: relative;
             height: 1px;
@@ -299,13 +276,8 @@
             opacity: 0.6;
             animation: wave 2s infinite linear;
         }
-        
-        @keyframes wave {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
 
-        /* Introspection quotes to match your brand's core theme */
+        /* Improved quote styling */
         .introspection-quote {
             font-style: italic;
             text-align: center;
@@ -338,15 +310,22 @@
             right: 0;
         }
 
-        /* Media queries for responsiveness */
+        /* Media queries for better responsive design */
+        @media (max-width: 900px) {
+            .platform-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
         @media (max-width: 768px) {
             .platform-grid {
                 grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto 40px;
             }
             
             .platform-card {
-                max-width: 350px;
-                margin: 0 auto;
+                padding: 25px 20px;
             }
             
             .introspection-quote {
@@ -360,9 +339,9 @@
             }
         }
 
-        /* Content size adjustment for donation page */
+        /* Content size adjustment */
         .content {
-            max-width: 1000px;
+            max-width: 1200px;
             padding: 40px 20px;
         }
 
@@ -384,22 +363,8 @@
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
-        
-        /* Subtle Animations */
-        .pulse-hover {
-            transition: transform 0.3s ease;
-        }
-        
-        .pulse-hover:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Visual feedback on donation buttons */
-        .platform-link:active {
-            transform: scale(0.98);
-        }
-
-        /* Trustworthiness indicators */
+                
+        /* Trust indicators */
         .trust-indicators {
             display: flex;
             justify-content: center;
@@ -426,27 +391,12 @@
             color: #2e7d32; /* Trust green */
             font-size: 18px;
         }
-        
-        /* Light theme adjustments for better trust perception */
-        :root[data-theme="light"] .platform-card {
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        :root[data-theme="light"] .trust-badge {
-            background: rgba(255, 255, 255, 0.9);
-        }
-        
-        :root[data-theme="light"] .special-message {
-            background: linear-gradient(135deg, rgba(240, 240, 240, 0.7), rgba(250, 250, 250, 0.9));
-            border-left: 3px solid #0353a4;
-        }
-        
-        /* Security indicators */
+                
+        /* Security indicators - repositioned */
         .security-badge {
             position: absolute;
-            bottom: 15px;
-            right: 15px;
+            top: 18px;
+            left: 18px;
             color: #6e6e6e;
             font-size: 14px;
             display: flex;
@@ -457,6 +407,20 @@
         .security-badge i {
             color: #2e7d32;
             font-size: 12px;
+        }
+        
+        /* Dark mode adjustments */
+        :root[data-theme="dark"] .platform-card,
+        :root:not([data-theme="light"]) .platform-card {
+            background: rgba(32, 32, 35, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(74, 74, 79, 0.5);
+        }
+        
+        /* Light mode adjustments */
+        :root[data-theme="light"] .platform-card {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
     </style>
 
@@ -503,13 +467,17 @@
                 </p>
                 
                 <div class="support-description">
-                    <p>Your support enables me to create <span class="highlight-text">quality content</span>, <span class="highlight-text">open-source tools</span>, and <span class="highlight-text">innovative projects</span> that align with our shared values. Choose the platform that feels right for you.</p>
+                    <p>Your support enables me to create <span class="highlight-text">quality content</span>, <span class="highlight-text">projects</span>, and <span class="highlight-text">systems</span> that align with our shared values. Choose the platform that feels right for you.</p>
                 </div>
             </div>
+            
             <!-- Platform cards -->
             <div class="platform-grid">
                 <!-- Razorpay Card -->
-                <div class="platform-card platform-razorpay pulse-hover">
+                <div class="platform-card platform-razorpay">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i> Secure
+                    </div>
                     <div class="platform-badge badge-preferred">Preferred</div>
                     <div class="platform-icon">
                         <i class="fas fa-bolt"></i>
@@ -519,13 +487,14 @@
                     <a href="https://razorpay.me/@aroice" target="_blank" class="platform-link">
                         <i class="fas fa-heart"></i> Support on Razorpay
                     </a>
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i> Secure
-                    </div>
                 </div>
                 
                 <!-- GitHub Sponsors Card -->
-                <div class="platform-card platform-github pulse-hover">
+                <div class="platform-card platform-github">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i> Secure
+                    </div>
+                    <div class="platform-badge badge-github">For Devs</div>
                     <div class="platform-icon">
                         <i class="fab fa-github"></i>
                     </div>
@@ -534,13 +503,13 @@
                     <a href="https://github.com/sponsors/Aryan-Techie" target="_blank" class="platform-link">
                         <i class="fas fa-code"></i> Sponsor on GitHub
                     </a>
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i> Secure
-                    </div>
                 </div>
                 
                 <!-- Buy Me A Coffee Card -->
-                <div class="platform-card platform-bmac pulse-hover">
+                <div class="platform-card platform-bmac">
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i> Secure
+                    </div>
                     <div class="platform-badge badge-new">New</div>
                     <div class="platform-icon">
                         <i class="fas fa-mug-hot"></i>
@@ -550,28 +519,40 @@
                     <a href="https://www.buymeacoffee.com/aroice" target="_blank" class="platform-link">
                         <i class="fas fa-coffee"></i> Buy Me A Coffee
                     </a>
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i> Secure
-                    </div>
                 </div>
                 
-                <!-- Liberapay Card -->
-                <div class="platform-card platform-liberapay pulse-hover">
-                    <div class="platform-icon">
-                        <i class="fas fa-hand-holding-heart"></i>
-                    </div>
-                    <h3 class="platform-name">Liberapay</h3>
-                    <p class="platform-description">Support with recurring donations to sustain open-source projects. Open, transparent, and community-driven platform.</p>
-                    <a href="https://liberapay.com/aroice" target="_blank" class="platform-link">
-                        <i class="fas fa-dove"></i> Support on Liberapay
-                    </a>
+                <!-- Cryptocurrency Card -->
+                <div class="platform-card platform-crypto">
                     <div class="security-badge">
                         <i class="fas fa-shield-alt"></i> Secure
                     </div>
+                    <div class="platform-badge badge-crypto">Crypto</div>
+                    <div class="platform-icon">
+                        <i class="fab fa-ethereum"></i>
+                    </div>
+                    <h3 class="platform-name">Cryptocurrency</h3>
+                    <p class="platform-description">Support with Ethereum and other ERC-20 tokens. Decentralized, global, and privacy-focused donation option.</p>
+                    <a href="#" class="platform-link" onclick="copyToClipboard('0xF0ADDBFe28223711c05A6969F8cB4645348b44a6'); return false;">
+                        <i class="fas fa-wallet"></i> <span id="crypto-btn-text">Copy Wallet Address</span>
+                    </a>
                 </div>
             </div>
-            
+
+            <script>
+                function copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(function() {
+                        document.getElementById('crypto-btn-text').textContent = 'Copied!';
+                        setTimeout(function() {
+                            document.getElementById('crypto-btn-text').textContent = 'Copy Wallet Address';
+                        }, 2000);
+                    }, function(err) {
+                        console.error('Could not copy text: ', err);
+                    });
+                }
+            </script>
+
             <div class="impact-wave"></div>
+            
             <!-- Trust indicators -->
             <div class="trust-indicators">
                 <div class="trust-badge">
@@ -583,35 +564,6 @@
                 <div class="trust-badge">
                     <i class="fas fa-thumbs-up"></i> Community Approved
                 </div>
-            </div>
-            
-            <!-- Special message -->
-            <div class="special-message">
-                <h3><i class="fas fa-star impact-icon"></i>Why Support?</h3>
-                <ul class="message-points">
-                    <li>
-                        <i class="fas fa-code"></i>
-                        <span>Create more <strong>open-source tools</strong> and content</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Explore <strong>new ideas</strong> and innovations</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Share more <strong>free tutorials</strong> with the community</span>
-                    </li>
-                </ul>
-                <p style="margin-top: 15px"><strong>Thanks for your support!</strong></p>
-            </div>
-            
-            <div class="button-container" role="navigation" aria-label="Contact options" style="margin-top: 30px;">
-                <a href="mailto:support@aroice.in" class="button pulse-on-hover">
-                    <i class="fa-solid fa-envelope" aria-hidden="true"></i> <strong>Questions?</strong> admin@aroice.in
-                </a>
-                <a href="../index.html" class="button pulse-on-hover">
-                    <i class="fa-solid fa-house" aria-hidden="true"></i> <strong>Return to Main Site</strong>
-                </a>
             </div>
             
             <p class="footer" tabindex="0">&copy; <span id="current-year">2025</span> AROICE. <br> All rights reserved.</p>
