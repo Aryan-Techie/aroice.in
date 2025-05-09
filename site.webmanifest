@@ -1,0 +1,21 @@
+{
+  "name": "AROICE",
+  "short_name": "AROICE",
+  "description": "Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#0466c8",
+  "icons": [
+    {
+      "src": "images/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "images/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

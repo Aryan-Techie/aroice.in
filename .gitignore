@@ -1,0 +1,20 @@
+# Ignore the 'new' folder
+/new/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Build output
+dist/
+build/
