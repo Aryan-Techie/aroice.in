@@ -59,7 +59,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create cursor trail effect
     function createCursorTrail() {
+        // Skip cursor trail on reduced motion preference
         if (prefersReducedMotion()) return;
+        
+        // Check if user is on a mobile device and skip cursor trail if true
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return; // Exit the function early for mobile devices
+        }
         
         const numberOfDots = 12;
         const dots = [];
@@ -159,3 +165,6 @@ document.head.insertAdjacentHTML('beforeend', `
 }
 </style>
 `);
+
+
+

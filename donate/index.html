@@ -441,10 +441,12 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            width: 100vw;
+            height: 100vh;
             background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
             justify-content: center;
             align-items: center;
             opacity: 0;
@@ -464,15 +466,42 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
-            position: relative;
-            transform: translateY(30px) scale(0.95);
+            position: absolute;
+            top: 50%;
+            left: 25em;
+            transform: translate(-50%, -50%) scale(0.95);
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             border: 1px solid var(--color-border);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
+        /* Add a media query for mobile screens */
+@media (max-width: 768px) { 
+    .crypto-popup-content {
+        background: var(--color-surface);
+        padding: 30px;
+        border-radius: var(--border-radius-medium);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 400px;  /* Smaller max width */
+        width: 80%;        /* Responsive width */
+        position: absolute;
+        top: 50%;
+        left: 45%; /* <-- this is key */
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        border: 1px solid var(--color-border);
+        max-height: 90vh;
+        overflow-y: auto;
+
+    }
+}
+
         .crypto-popup.active .crypto-popup-content {
-            transform: translateY(0) scale(1);
+            transform: translate(-50%, -50%) scale(1);
             opacity: 1;
         }
 
@@ -754,16 +783,26 @@
             <script>
                 function openCryptoPopup() {
                     const popup = document.getElementById('crypto-popup');
+                    // Reset any scrolling position
+                    window.scrollTo(0, 0);
+                    // Display the popup
                     popup.style.display = 'flex';
-                    // Small delay to ensure the display:flex is applied before adding the active class
-                    // This creates the smooth animation effect
+                    // Lock scrolling on the background
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                    // Add active class with a small delay for animation
                     setTimeout(() => popup.classList.add('active'), 10);
                 }
 
                 function closeCryptoPopup() {
                     const popup = document.getElementById('crypto-popup');
                     popup.classList.remove('active');
-                    // Wait for animation to complete before hiding the popup
+                    // Restore scrolling
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                    // Hide popup after animation
                     setTimeout(() => popup.style.display = 'none', 300);
                 }
 
