@@ -428,23 +428,11 @@ body {
 }
 
 .logo-link::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: rgba(4, 102, 200, 0.6);
-  transform: translateX(-50%);
-  transition: width var(--transition-default);
+  display: none; /* Remove the underline element */
 }
 
 .logo-link:hover {
   transform: translateY(-3px);
-}
-
-.logo-link:hover::after {
-  width: 60%;
 }
 
 .logo {
@@ -457,8 +445,9 @@ body {
 }
 
 .logo-link:hover .logo {
-  filter: drop-shadow(0 0 12px rgba(4, 102, 200, 0.7));
-  transform: rotate(-5deg);
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(4, 102, 200, 0.7)) contrast(1.1) brightness(1.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 /* Theme toggle button */
