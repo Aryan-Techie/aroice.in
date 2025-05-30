@@ -32,22 +32,37 @@
                 grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
                 gap: 2.5rem;
             }
-        }
-
-        .project-card {
-            background: var(--color-card-bg);
-            border-radius: 12px;
-            padding: 1.75rem;
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }        .project-card {
+            background: #ffffff; /* Explicit white background for light mode */
+            border-radius: 16px; /* Increased from 12px to 16px (rounded-2xl equivalent) */
+            padding: 2rem; /* Increased from 1.75rem to 2rem (roughly p-6 equivalent) */
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Light mode subtle border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(0, 0, 0, 0.02); /* Added inner glow */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
             position: relative;
             overflow: hidden;
             animation: fadeIn 0.6s ease-out forwards;
             height: 100%;
             display: flex;
             flex-direction: column;
-        }        .project-card::before {
+        }
+          /* Add dark mode shadow and background */
+        @media (prefers-color-scheme: dark) {
+            .project-card {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Added inner glow */
+                background: rgba(255, 255, 255, 0.03); /* Slightly translucent white for dark mode */
+                backdrop-filter: blur(20px);
+                border-color: rgba(255, 255, 255, 0.05); /* Dark mode subtle border */
+            }
+        }
+        
+        /* Support for class-based theme switching */
+        .dark-theme .project-card {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Added inner glow */
+            background: rgba(255, 255, 255, 0.03); /* Slightly translucent white for dark mode */
+            backdrop-filter: blur(20px);
+            border-color: rgba(255, 255, 255, 0.05); /* Dark mode subtle border */
+        }.project-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -55,8 +70,8 @@
             width: 6px;
             height: 100%;
             opacity: 0.85;
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
+            border-top-left-radius: 16px; /* Increased to match card border-radius */
+            border-bottom-left-radius: 16px; /* Increased to match card border-radius */
             transition: width 0.3s ease;
         }
         
@@ -75,25 +90,68 @@
         .project-card:nth-child(3)::before {
             background: linear-gradient(to bottom, #ff9800, #fb8c00); /* ASHES orange */
         }
-        
-        /* Subtle elevation differences */
+          /* Subtle elevation differences - Light mode */
         .project-card:nth-child(1) {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
         }
         
         .project-card:nth-child(2) {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
             transform: translateY(2px);
         }
         
         .project-card:nth-child(3) {
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
             transform: translateY(-2px);
         }
-
-        .project-card:hover {
+        
+        /* Dark mode elevation differences */
+        @media (prefers-color-scheme: dark) {
+            .project-card:nth-child(1) {
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+            }
+            
+            .project-card:nth-child(2) {
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+            }
+            
+            .project-card:nth-child(3) {
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            }
+        }
+        
+        /* Support for class-based theme switching */
+        .dark-theme .project-card:nth-child(1) {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+        }
+        
+        .dark-theme .project-card:nth-child(2) {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+        }
+        
+        .dark-theme .project-card:nth-child(3) {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+        }.project-card:hover {
             transform: translateY(-5px) !important;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.05); /* Enhanced inner glow */
+            background: #fafafa; /* Very subtle light gray on hover in light mode */
+            border-color: rgba(0, 0, 0, 0.08); /* Slightly darker border on hover */
+        }
+        
+        /* Enhanced hover shadow and background for dark mode */
+        @media (prefers-color-scheme: dark) {
+            .project-card:hover {
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Enhanced inner glow */
+                background: rgba(255, 255, 255, 0.05); /* Slightly brighter on hover in dark mode */
+                border-color: rgba(255, 255, 255, 0.08); /* Slightly brighter border on hover */
+            }
+        }
+        
+        /* Support for class-based theme switching */
+        .dark-theme .project-card:hover {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Enhanced inner glow */
+            background: rgba(255, 255, 255, 0.05); /* Slightly brighter on hover in dark mode */
+            border-color: rgba(255, 255, 255, 0.08); /* Slightly brighter border on hover */
         }
         
         .project-card::after {
@@ -230,13 +288,11 @@
             gap: 1rem;
             justify-content: center;
             margin-top: auto;
-        }
-
-        .project-link {
+        }        .project-link {
             display: inline-flex;
             align-items: center;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
+            padding: 0.7rem 1.4rem; /* Increased padding for better touch targets */
+            border-radius: 12px; /* Increased for modern look */
             font-size: 0.95rem;
             font-weight: 500;
             text-decoration: none;
@@ -247,7 +303,7 @@
         .coming-soon {
             background: var(--color-accent-soft);
             color: var(--color-accent);
-            cursor: not-allowed;
+            cursor: progress;
             opacity: 0.8;
         }
 
@@ -276,9 +332,7 @@
         .project-link i {
             margin-right: 0.5rem;
             font-size: 0.9em;
-        }        
-        
-        .back-link {
+        }          .back-link {
             display: inline-flex;
             align-items: center;
             margin-bottom: 2.5rem;
@@ -287,16 +341,34 @@
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 500;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--color-border);
-            padding: 0.65rem 1.2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            background: #ffffff; /* Light mode: white background */
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Light mode subtle border */
+            padding: 0.75rem 1.4rem; /* Increased padding for consistency */
+            border-radius: 12px; /* Increased to be more modern, but slightly smaller than cards */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 0 0 1px rgba(0, 0, 0, 0.02); /* Added inner glow */
             position: relative;
             overflow: hidden;
             float: left;
             clear: both;
+        }
+        
+        /* Dark mode for back link */
+        @media (prefers-color-scheme: dark) {
+            .back-link {
+                background: rgba(255, 255, 255, 0.03); /* Matching card background in dark mode */
+                backdrop-filter: blur(20px);
+                border-color: rgba(255, 255, 255, 0.05); /* Dark mode subtle border */
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Added inner glow */
+            }
+        }
+        
+        /* Support for class-based theme switching */
+        .dark-theme .back-link {
+            background: rgba(255, 255, 255, 0.03); /* Matching card background in dark mode */
+            backdrop-filter: blur(20px);
+            border-color: rgba(255, 255, 255, 0.05); /* Dark mode subtle border */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.05); /* Added inner glow */
         }
 
         .back-link::before {
@@ -309,12 +381,28 @@
             background: linear-gradient(120deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
             transform: translateX(-100%);
             transition: transform 0.35s ease;
-        }
-
-        .back-link:hover {
+        }        .back-link:hover {
             transform: translateX(-3px);
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.05); /* Enhanced inner glow */
             color: var(--color-accent);
+            background: #fafafa; /* Light hover in light mode */
+            border-color: rgba(0, 0, 0, 0.08); /* Slightly darker border on hover */
+        }
+        
+        /* Dark mode hover for back link */
+        @media (prefers-color-scheme: dark) {
+            .back-link:hover {
+                background: rgba(255, 255, 255, 0.05); /* Matching card hover in dark mode */
+                border-color: rgba(255, 255, 255, 0.08); /* Slightly brighter border on hover */
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Enhanced inner glow */
+            }
+        }
+        
+        /* Support for class-based theme switching */
+        .dark-theme .back-link:hover {
+            background: rgba(255, 255, 255, 0.05); /* Matching card hover in dark mode */
+            border-color: rgba(255, 255, 255, 0.08); /* Slightly brighter border on hover */
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.08); /* Enhanced inner glow */
         }
 
         .back-link:hover::before {
@@ -400,10 +488,8 @@
             
             .project-icon {
                 margin-right: 1.25rem;
-            }
-
-            .project-card {
-                padding: 1.5rem;
+            }            .project-card {
+                padding: 1.75rem; /* Maintain larger padding even on smaller screens */
             }
             
             .page-title {
@@ -448,10 +534,9 @@
                 text-align: center;
                 clear: both;
                 margin-top: 1rem;
-            }
-              .back-link {
+            }              .back-link {
                 margin-bottom: 1.5rem;
-                padding: 0.6rem 1rem;
+                padding: 0.7rem 1.2rem; /* Increased padding for better touch target */
                 width: fit-content;
                 font-size: 0.9rem;
                 display: flex;
@@ -510,14 +595,18 @@
                             <h2 class="project-title">ARGON - Your Shield Against Chaos</h2>
                             <p class="project-subtitle">Chrome Extension</p>
                         </div>
-                    </div>
-                    <div class="project-description">
-                        <p>Helps you reduce distractions and reclaim your precious attention. Custom blocking, analytics, and focus mode—a mindful system for the digital world.</p>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://argon.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
-                            <i class="fas fa-external-link-alt"></i> Learn More
-                        </a>
+                    </div>                    <div class="project-description">
+                        <p>Your attention is sacred, guard it well.<br>A Chrome extension that blocks distractions, tracks focus habits,<br> & promotes mindful digital use through built-in productivity tools.</p>
+                    </div>                    <div class="project-links">
+                        <div style="position: relative; width: 100%;">
+                            <span class="project-link coming-soon" style="margin-bottom: 0.5rem; background: rgba(255, 82, 82, 0.1); color: #ff5252; border: 1px solid rgba(255, 82, 82, 0.2);">
+                                <i class="fas fa-clock"></i> Coming Soon
+                            </span>
+                            <br>
+                            <a href="https://argon.aroice.in" target="_blank" rel="noopener" class="project-link visit-link" style="justify-content: center; margin-top: 0.5rem;">
+                                <i class="fas fa-external-link-alt"></i> Learn More
+                            </a>
+                        </div>
                     </div>
                 </article>
 
@@ -533,7 +622,7 @@
                         </div>
                     </div>
                     <div class="project-description">
-                        <p>Scroll effortlessly using your volume wheel. Designed for flow, speed, and focus—turn a mundane input device into a productivity powerhouse.</p>
+                        <p>Scroll smarter. Work smoother.<br>A Windows app that transforms your volume wheel into a smooth,<br> intuitive scroll controller for effortless navigation.</p>
                     </div>
                     <div class="project-links">
                         <a href="https://smart-scroll.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
@@ -554,7 +643,9 @@
                         </div>
                     </div>
                     <div class="project-description">
-                        <p>Your mortality, always in sight. A quiet nudge to stay aware, focused, and alive. Transform each new tab into a moment of mindfulness and purpose.</p>
+                        <p>Your mortality, always in sight.<br> A browser extension that replaces your new tab page with<br> a reminder of mortality to inspire presence and focus.
+
+</p>
                     </div>
                     <div class="project-links">
                         <a href="https://ashes.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
