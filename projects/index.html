@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects & Creations by Aryan Jangra (AryanTechie / AROICE) - Chrome extensions, tools, and digital experiences designed for mindfulness and productivity.">
+    <meta name="keywords" content="Aryan Jangra, AryanTechie, Aroice, Projects, Chrome Extension, Argon, Smart Scroll, Ashes, productivity tools">
+    <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">
+    <meta property="og:title" content="AROICE - Projects">
+    <meta property="og:description" content="Digital tools and mindful experiences created by Aryan Jangra (AryanTechie) for better focus, productivity, and awareness.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aroice.in/projects/">
+    <meta property="og:image" content="https://aroice.in/images/og-banner.png">
+    <meta property="og:image:alt" content="AROICE Banner">
+    <title>AROICE - Projects</title>
+    <link rel="icon" type="image/x-icon" href="../images/logo.webp">
+    <link rel="stylesheet" href="../style.css?v=1.0.0">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+    <style>          .project-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        @media (min-width: 992px) {
+            .project-container {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+                gap: 2.5rem;
+            }
+        }
+
+        .project-card {
+            background: var(--color-card-bg);
+            border-radius: 12px;
+            padding: 1.75rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out forwards;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            opacity: 0.85;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
+            transition: width 0.3s ease;
+        }
+        
+        .project-card:hover::before {
+            width: 8px;
+        }
+        
+        .project-card:nth-child(1)::before {
+            background: linear-gradient(to bottom, #ff5252, #ff1744); /* ARGON red */
+        }
+
+        .project-card:nth-child(2)::before {
+            background: linear-gradient(to bottom, #2196f3, #0d8aee); /* SMART SCROLL blue */
+        }
+
+        .project-card:nth-child(3)::before {
+            background: linear-gradient(to bottom, #ff9800, #fb8c00); /* ASHES orange */
+        }
+        
+        /* Subtle elevation differences */
+        .project-card:nth-child(1) {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card:nth-child(2) {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(2px);
+        }
+        
+        .project-card:nth-child(3) {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.12), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .project-card:hover::after {
+            opacity: 1;
+        }.project-header {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }        
+          .project-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: var(--color-card-bg);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            border: 1px solid var(--color-border);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-icon::after {
+            content: '';
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .project-card:nth-child(1) .project-icon {
+            background: rgba(255, 82, 82, 0.1);
+        }
+        
+        .project-card:nth-child(2) .project-icon {
+            background: rgba(33, 150, 243, 0.1);
+        }
+        
+        .project-card:nth-child(3) .project-icon {
+            background: rgba(255, 152, 0, 0.1);
+        }
+        
+        .project-icon img {
+            width: 65%;
+            height: 65%;
+            object-fit: contain;
+            display: block;
+            position: relative;
+            z-index: 3;
+            filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+        }.project-title-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 0.25rem;
+        }        
+        
+        .project-title {
+            font-size: 1.25rem;
+            margin: 0;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            line-height: 1.3;
+        }
+
+        .project-subtitle {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin: 0.35rem 0 0;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+        }        .project-description {
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        /* Typography variations */
+        .project-card:nth-child(1) .project-title {
+            font-size: 1.32rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .project-card:nth-child(2) .project-title {
+            font-size: 1.26rem;
+            letter-spacing: 0em;
+        }
+        
+        .project-card:nth-child(3) .project-title {
+            font-size: 1.3rem;
+            letter-spacing: -0.005em;
+        }
+        
+        .project-card:nth-child(1) .project-description {
+            font-size: 1.02rem;
+            line-height: 1.65;
+        }
+        
+        .project-card:nth-child(2) .project-description {
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+        
+        .project-card:nth-child(3) .project-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 450;
+        }          .project-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        }
+
+        .coming-soon {
+            background: var(--color-accent-soft);
+            color: var(--color-accent);
+            cursor: not-allowed;
+            opacity: 0.8;
+        }
+
+        .visit-link {
+            background: var(--color-accent);
+            color: white;
+        }
+        
+        .project-card:nth-child(1) .visit-link {
+            background: linear-gradient(135deg, #ff5252, #ff1744);
+        }
+        
+        .project-card:nth-child(2) .visit-link {
+            background: linear-gradient(135deg, #2196f3, #0d8aee);
+        }
+        
+        .project-card:nth-child(3) .visit-link {
+            background: linear-gradient(135deg, #ff9800, #fb8c00);
+        }
+
+        .visit-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-link i {
+            margin-right: 0.5rem;
+            font-size: 0.9em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-3px);
+        }
+
+        .back-link i {
+            margin-right: 0.5rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-text-primary);
+        }
+
+        .page-description {
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }        /* Make sure the content stays on top of the hover effect overlay */
+        .project-header, 
+        .project-description, 
+        .project-links {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Animations for card appear */
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        
+        .project-card:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+        
+        .project-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .page-header {
+            animation: slideUp 0.7s ease-out forwards;
+            opacity: 0;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }@media (max-width: 992px) {
+            .project-container {
+                gap: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                align-items: center;
+            }
+            
+            .project-icon {
+                margin-right: 1.25rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.75rem;
+            }
+            
+            .page-description {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .project-header {
+                flex-direction: row;
+                align-items: center;
+            }
+            
+            .project-icon {
+                width: 56px;
+                height: 56px;
+                margin-right: 1rem;
+            }
+            
+            .project-title {
+                font-size: 1.15rem !important;
+            }
+            
+            .project-subtitle {
+                font-size: 0.85rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+            }
+            
+            .project-link {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .page-header {
+                text-align: center;
+            }
+            
+            .back-link {
+                margin-bottom: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode" tabindex="0" role="switch" aria-checked="false">
+        <i class="fas fa-moon" aria-hidden="true" id="theme-icon"></i>
+        <span class="visually-hidden"></span>
+    </button>
+
+    <div class="background"></div>
+    <div class="grid"></div>
+    
+    <div class="container">
+        <main>
+            <a href="../" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+
+            <div class="page-header">
+                <h1 class="page-title">Projects & Creations</h1>
+                <p class="page-description">Digital Products & Tools Designed For A Better World</p>
+            </div>
+
+            <div class="project-container">                <!-- ARGON Project -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="assets/argon.png" alt="ARGON logo" />
+                        </div>
+                        <div class="project-title-container">
+                            <h2 class="project-title">ARGON - Your Shield Against Chaos</h2>
+                            <p class="project-subtitle">Chrome Extension</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <p>Helps you reduce distractions and reclaim your precious attention. Custom blocking, analytics, and focus mode—a mindful system for the digital world.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://argon.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
+                            <i class="fas fa-external-link-alt"></i> Learn More
+                        </a>
+                    </div>
+                </article>
+
+                <!-- SMART SCROLL Project -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="assets/smartscroll.png" alt="SMART SCROLL logo" />
+                        </div>
+                        <div class="project-title-container">
+                            <h2 class="project-title">SMART SCROLL - Reimagined Volume Knob</h2>
+                            <p class="project-subtitle">Windows Application</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <p>Scroll effortlessly using your volume wheel. Designed for flow, speed, and focus—turn a mundane input device into a productivity powerhouse.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://smart-scroll.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
+                    </div>
+                </article>
+
+                <!-- ASHES Project -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <img src="assets/ashes.png" alt="ASHES logo" />
+                        </div>
+                        <div class="project-title-container">
+                            <h2 class="project-title">ASHES - New Tab Reimagined</h2>
+                            <p class="project-subtitle">Browser Extension</p>
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        <p>Your mortality, always in sight. A quiet nudge to stay aware, focused, and alive. Transform each new tab into a moment of mindfulness and purpose.</p>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://ashes.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
+                            <i class="fas fa-external-link-alt"></i> Visit Site
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </main>
+        
+        <footer class="footer" style="margin-top: 4rem; text-align: center; opacity: 1;">
+            <p>&copy; <span id="current-year">2025</span> AROICE <br> All rights reserved.</p>
+            <div class="legal-links">
+                <a href="../privacy.html" class="legal-link">Privacy Policy</a> |
+                <a href="../terms.html" class="legal-link">Terms</a> |
+                <a href="../refund.html" class="legal-link">Refund Policy</a>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="../theme.js?v=1.0.0"></script>
+    <script>
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
