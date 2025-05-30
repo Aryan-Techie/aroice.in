@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+<head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aryan Jangra (AryanTechie) / (AROICE) - Computer Science student at IIT Patna, content creator, and developer. Founder of AROICE, 'Aroice' Aryan's Personal Brand, exploring the intersection of technology and content creation.">
-    <meta name="keywords" content="Aryan Jangra, AryanTechie, Aroice, IIT Patna, Computer Science, content creator, developer, Argon extension, productivity tools">
-    <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">    <meta property="og:title" content="AROICE">
-    <meta property="og:description" content="Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator.">
+    <meta name="description" content="AROICE | Aryan Jangra (AryanTechie) - Computer Science student at IIT Patna, content creator, developer, and productivity expert. Explore digital tools, self-improvement resources, and tech insights.">
+    <meta name="keywords" content="Aryan Jangra, AryanTechie, AROICE, IIT Patna, Computer Science, content creator, developer, Argon extension, productivity tools, self-improvement, tech blog, digital products">
+    <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta property="og:title" content="AROICE - Personal Brand of Aryan Jangra | Tech, Content & Products">
+    <meta property="og:description" content="Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator focused on productivity and self-improvement.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aroice.in">
     <meta property="og:image" content="https://aroice.in/images/og-banner.png">
     <meta property="og:image:alt" content="AROICE Banner">
-    <title>AROICE</title>
+    <meta property="og:site_name" content="AROICE">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AROICE - Personal Brand of Aryan Jangra | Tech & Content">
+    <meta name="twitter:description" content="Tech enthusiast, developer, and content creator focused on productivity and self-improvement.">
+    <meta name="twitter:image" content="https://aroice.in/images/og-banner.png">
+    <title>AROICE - Personal Brand of Aryan Jangra | Tech, Content & Digital Products</title>
+    <link rel="canonical" href="https://aroice.in">
+    <link rel="alternate" type="application/rss+xml" title="AROICE RSS Feed" href="https://aroice.in/feed.xml">
+    <!-- Alternate language versions -->
+    <link rel="alternate" hreflang="en" href="https://aroice.in" />
+    <link rel="alternate" hreflang="x-default" href="https://aroice.in" />
     <link rel="icon" type="image/x-icon" href="images/logo.webp">
     <link rel="stylesheet" href="style.css?v=1.0.0">
     <!-- Font Awesome for icons -->
@@ -21,9 +35,7 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" as="style">
     <link rel="preload" href="script.js?v=1.0.0" as="script">
     <link rel="preload" href="theme.js?v=1.0.0" as="script">
-    <link rel="preload" href="micro-interactions.js?v=1.0.0" as="script">
-
-    <!-- Structured Data for SEO -->
+    <link rel="preload" href="micro-interactions.js?v=1.0.0" as="script">    <!-- Enhanced Structured Data for SEO -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -31,29 +43,77 @@
         "name": "Aryan Jangra",
         "alternateName": "AROICE",
         "url": "https://aroice.in",
-        "image": "images/logo.webp",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://aroice.in/images/logo.webp",
+            "width": "800",
+            "height": "800"
+        },
         "sameAs": [
             "https://youtube.com/@aroice",
             "https://linktr.ee/aryantechie",
-            "https://blogs.aroice.in"
+            "https://blogs.aroice.in",
+            "https://github.com/Aryan-Techie"
         ],
         "jobTitle": "Computer Science Student",
         "worksFor": {
             "@type": "Organization",
             "name": "IIT Patna"
         },
-        "description": "Computer Science student at IIT Patna, self-improvement content creator, and developer. Founder of Aroice, exploring the intersection of technology and content creation."
+        "description": "Computer Science student at IIT Patna, self-improvement content creator, and developer. Founder of AROICE, exploring the intersection of technology and content creation.",
+        "knowsAbout": ["Web Development", "Chrome Extensions", "Productivity Tools", "Self Improvement", "Content Creation"]
     }
     </script>
     
-    <!-- Additional structured data for WebSite -->
+    <!-- Enhanced structured data for WebSite with SearchAction -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "url": "https://aroice.in",
         "name": "AROICE",
-        "description": "Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator."
+        "description": "Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator focused on productivity and self-improvement."
+    }
+    </script>
+    
+    <!-- Adding Organization structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AROICE",
+        "url": "https://aroice.in",
+        "logo": "https://aroice.in/images/logo.webp",
+        "description": "AROICE is the personal brand of Aryan Jangra, focused on technology, self-improvement, and productivity.",
+        "founder": {
+            "@type": "Person",
+            "name": "Aryan Jangra"
+        },
+        "sameAs": [
+            "https://youtube.com/@aroice",
+            "https://linktr.ee/aryantechie",
+            "https://blogs.aroice.in"
+            "https://insight.aroice.in"
+            "https://instagram.com/aryantechie"
+            "https://www.linkedin.com/in/aryantechie"
+            "https://github.com/Aryan-Techie"
+        ]
+    }
+    </script>
+    
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aroice.in"
+            }
+        ]
     }
     </script>
 
@@ -338,6 +398,21 @@
     <script>
         // Only keep the copyright year update here
         document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    
+    <!-- Register Service Worker for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
     </script>
 </body>
 </html>

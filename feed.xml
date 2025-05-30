@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AROICE - Personal Brand of Aryan Jangra</title>
+    <description>Tech enthusiast, developer, and content creator focused on productivity and self-improvement.</description>
+    <link>https://aroice.in</link>
+    <atom:link href="https://aroice.in/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 31 May 2025 12:00:00 +0530</pubDate>
+    <lastBuildDate>Sat, 31 May 2025 12:00:00 +0530</lastBuildDate>
+    <language>en-us</language>
+    <generator>Manual</generator>
+    
+    <!-- Home Page -->
+    <item>
+      <title>AROICE - Personal Brand of Aryan Jangra</title>
+      <description>Official website of Aryan Jangra (AryanTechie) - Tech enthusiast, developer, and content creator focused on productivity and self-improvement.</description>
+      <link>https://aroice.in</link>
+      <guid>https://aroice.in</guid>
+      <pubDate>Sat, 31 May 2025 12:00:00 +0530</pubDate>
+    </item>
+    
+    <!-- Projects Page -->
+    <item>
+      <title>AROICE Projects - Chrome Extensions &amp; Productivity Tools</title>
+      <description>Explore digital tools and mindful experiences created by Aryan Jangra (AROICE) for better focus, productivity, and awareness.</description>
+      <link>https://aroice.in/projects/</link>
+      <guid>https://aroice.in/projects/</guid>
+      <pubDate>Sat, 31 May 2025 12:00:00 +0530</pubDate>
+    </item>
+    
+    <!-- Shop Page -->
+    <item>
+      <title>AROICE Shop - Digital Products for Productivity &amp; Self-Improvement</title>
+      <description>Digital products and templates for mental performance, productivity, and self-improvement.</description>
+      <link>https://aroice.in/shop</link>
+      <guid>https://aroice.in/shop</guid>
+      <pubDate>Sat, 31 May 2025 12:00:00 +0530</pubDate>
+    </item>
+  </channel>
+</rss>

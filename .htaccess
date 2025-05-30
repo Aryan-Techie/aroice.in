@@ -1,3 +1,4 @@
+# SEO and Performance Optimization
 # Cache Control Headers
 <IfModule mod_expires.c>
   ExpiresActive On
@@ -40,4 +41,62 @@
   <FilesMatch "\.(html|htm|xml|txt|json)$">
     Header set Cache-Control "public, max-age=0, must-revalidate"
   </FilesMatch>
+</IfModule>
+
+# Enable compression for better performance
+<IfModule mod_deflate.c>
+  # Compress HTML, CSS, JavaScript, Text, XML and fonts
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+</IfModule>
+
+# URL Rewrite Rules for SEO
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
+  # Redirect from non-www to www
+  RewriteCond %{HTTP_HOST} ^aroice\.in [NC]
+  RewriteRule ^(.*)$ https://www.aroice.in/$1 [L,R=301]
+  
+  # Remove trailing slashes
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)/$ /$1 [L,R=301]
+  
+  # Prevent directory listing
+  Options -Indexes
+</IfModule>
+
+# Custom error pages for better user experience and SEO
+ErrorDocument 404 /404.html
+ErrorDocument 500 /404.html
+
+# Security Headers
+<IfModule mod_headers.c>
+  # X-XSS Protection
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # X-Frame-Options to prevent clickjacking
+  Header set X-Frame-Options "SAMEORIGIN"
+  
+  # X-Content-Type-Options to prevent MIME sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Referrer-Policy
+  Header set Referrer-Policy "no-referrer-when-downgrade"
 </IfModule>

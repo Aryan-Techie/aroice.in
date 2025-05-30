@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AROICE Shop - Digital products and templates for mental performance, productivity, and self-improvement.">
-    <meta name="keywords" content="AROICE shop, NeuroScore, notion templates, mental performance, digital products">
+    <meta name="description" content="AROICE Shop - Premium digital products and templates for mental performance, productivity, and self-improvement created by Aryan Jangra.">
+    <meta name="keywords" content="AROICE shop, NeuroScore, notion templates, mental performance, digital products, productivity tools, self-improvement resources">
     <meta name="author" content="Aryan Jangra, Aryan Techie, AROICE">
-    <meta property="og:title" content="AROICE Shop">
-    <meta property="og:description" content="Digital products and templates for mental performance, productivity, and self-improvement.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="AROICE Shop - Digital Products for Productivity & Self-Improvement">
+    <meta property="og:description" content="Discover premium digital products and templates for mental performance, productivity tracking, and self-improvement by Aryan Jangra.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://aroice.in/shop">
-    <meta property="og:image" content="../images/logo.webp">
-    <meta property="og:image:alt" content="AROICE Logo">
-    <title>AROICE Shop</title>
+    <meta property="og:image" content="https://aroice.in/images/og-banner.png">
+    <meta property="og:image:alt" content="AROICE Shop Banner">
+    <meta property="og:site_name" content="AROICE">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AROICE Shop - Digital Products">
+    <meta name="twitter:description" content="Premium digital products for productivity and self-improvement.">
+    <meta name="twitter:image" content="https://aroice.in/images/og-banner.png">
+    <link rel="canonical" href="https://aroice.in/shop">
+    <title>AROICE Shop - Premium Digital Products for Productivity & Self-Improvement</title>
     <link rel="icon" type="image/x-icon" href="../images/logo.webp">
     <link rel="stylesheet" href="../style.css?v=1.0.0">
     <!-- Font Awesome for icons -->
@@ -23,6 +30,52 @@
     <link rel="preload" href="../script.js?v=1.0.0" as="script">
     <link rel="preload" href="../theme.js?v=1.0.0" as="script">
     <link rel="preload" href="../micro-interactions.js?v=1.0.0" as="script">
+
+    <!-- Structured Data for Shop Products -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "Product",
+                "position": 1,
+                "name": "NeuroScore",
+                "description": "A comprehensive mental performance scoring system to quantify and improve your cognitive abilities.",
+                "image": "p1/neuroscore.png",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "9.99",
+                    "priceCurrency": "USD",
+                    "availability": "https://schema.org/InStock",
+                    "url": "https://aroice.in/shop"
+                }
+            }
+        ]
+    }
+    </script>
+    
+    <!-- BreadcrumbList structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://aroice.in"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Shop",
+                "item": "https://aroice.in/shop"
+            }
+        ]
+    }
+    </script>
 
     <!-- Shop-specific styles -->
     <style>
