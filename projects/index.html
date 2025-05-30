@@ -276,7 +276,9 @@
         .project-link i {
             margin-right: 0.5rem;
             font-size: 0.9em;
-        }        .back-link {
+        }        
+        
+        .back-link {
             display: inline-flex;
             align-items: center;
             margin-bottom: 2.5rem;
@@ -457,7 +459,27 @@
                 margin-right: auto;
                 float: left;
             }
+            
+            /* Style for the bottom back link */
+            main div:last-of-type .back-link {
+                float: none;
+                margin: 0 auto;
+            }
         }
+
+
+        @media (min-width: 768px) {
+  .back-link {
+    margin-left: 0;
+    margin-right: auto;
+    float: none; /* Reset float if needed */
+    align-self: flex-start; /* if inside a flex container */
+  }
+
+  .container {
+    align-items: flex-start !important; /* Optional: if back-link is inside a centered flex container */
+  }
+}
     </style>
 </head>
 <body>
@@ -470,15 +492,11 @@
     <div class="background"></div>
     <div class="grid"></div>
     
-    <div class="container">        <main>
-            <div style="width: 100%; overflow: hidden; margin-bottom: 1rem;">
-                <a href="../" class="back-link" aria-label="Return to homepage">
-                    <i class="fas fa-arrow-left"></i> Back to Home
-                </a>
-            </div>
-
+    <div class="container">        
+        
+        <main>
             <div class="page-header" style="clear: both;">
-                <h1 class="page-title">Projects & Creations</h1>
+                <h1 class="page-title"><br>Projects & Creations</h1>
                 <p class="page-description">Digital Products & Tools Designed For A Better World</p>
             </div>
 
@@ -542,8 +560,13 @@
                         <a href="https://ashes.aroice.in" target="_blank" rel="noopener" class="project-link visit-link">
                             <i class="fas fa-external-link-alt"></i> Visit Site
                         </a>
-                    </div>
-                </article>
+                    </div>                </article>
+            </div>
+            
+            <div style="width: 100%; display: flex; justify-content: center; margin-top: 3rem;">
+                <a href="../" class="back-link" style="float: none; margin: 0 auto;" aria-label="Return to homepage">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
             </div>
         </main>
         
