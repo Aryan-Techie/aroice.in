@@ -8,53 +8,62 @@ class PhotoCollage {
         this.photoContainer = document.querySelector('.photo-collage');
         this.photos = [];
         this.currentModal = null;
+        this.loadedPhotos = 0;
+        this.isLoading = false;
+        this.photosPerLoad = 12; // Instagram-like loading
+        this.intersectionObserver = null;
+        
+        // Store global reference for cleanup
+        window.photoCollageInstance = this;
         
         this.initializePhotos();
         this.createCollage();
         this.setupEventListeners();
+        this.setupInfiniteScroll();
+        this.disableRightClick();
     }
 
     initializePhotos() {
         // Photo data array with titles and years
         this.photos = [
             {
-                src: './album/aryan-techie-iit-patna-campus-standing-2025.jpg',
+                src: './album/aryan-techie-iit-patna-campus-standing-2025.webp',
                 alt: 'Aryan at IIT Patna campus',
                 title: 'Campus Portrait',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-formal-fit-mirror-portrait-2025.jpg',
+                src: './album/aryan-techie-formal-fit-mirror-portrait-2025.webp',
                 alt: 'Professional portrait in mirror',
                 title: 'Formal Mirror Portrait',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-reading-in-library-2025.jpg',
+                src: './album/aryan-techie-reading-in-library-2025.webp',
                 alt: 'Reading in library',
                 title: 'Library Study Session',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-laptop-setup-grind-late-night-2025.jpg',
+                src: './album/aryan-techie-laptop-setup-grind-late-night-2025.webp',
                 alt: 'Late night coding session',
                 title: 'Late Night Coding',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-airforce-plane-background-sitting-2025.jpg',
+                src: './album/aryan-techie-airforce-plane-background-sitting-2025.webp',
                 alt: 'Aviation themed portrait',
                 title: 'Aviation Dreams',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-plane-window-aesthetic-lookout-2025.jpg',
+                src: './album/aryan-techie-plane-window-aesthetic-lookout-2025.webp',
                 alt: 'Looking out airplane window',
                 title: 'Sky High Views',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-airport-working-nomad-style-2025.png',
+                src: './album/aryan-techie-airport-working-nomad-style-2025.webp',
                 alt: 'Digital nomad at airport',
                 title: 'Digital Nomad Life',
                 year: '2025'
@@ -66,13 +75,13 @@ class PhotoCollage {
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-shadow-wall-portrait-artistic.jpg',
+                src: './album/aryan-techie-shadow-wall-portrait-artistic.webp',
                 alt: 'Artistic shadow portrait',
                 title: 'Shadow Play',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-back-profile-edited-glow-effect-2025.jpg',
+                src: './album/aryan-techie-back-profile-edited-glow-effect-2025.webp',
                 alt: 'Back profile with glow effect',
                 title: 'Golden Hour Glow',
                 year: '2025'
@@ -84,235 +93,235 @@ class PhotoCollage {
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-cafe-glass-reflection-indoors.jpg',
+                src: './album/aryan-techie-cafe-glass-reflection-indoors.webp',
                 alt: 'Cafe reflection shot',
                 title: 'Cafe Contemplation',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-near-window-indoor-light-portrait-2025.png',
+                src: './album/aryan-techie-near-window-indoor-light-portrait-2025.webp',
                 alt: 'Natural light portrait',
                 title: 'Natural Light Portrait',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-group-selfie-smiling-2025.jpg',
+                src: './album/aryan-techie-group-selfie-smiling-2025.webp',
                 alt: 'Group selfie with friends',
                 title: 'Friends Forever',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-aroice-with-yash-iit-patna-2025.jpg',
+                src: './album/aryan-techie-aroice-with-yash-iit-patna-2025.webp',
                 alt: 'With friend at IIT Patna',
                 title: 'Campus Friendship',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-friends-campus-iit.jpg',
+                src: './album/aryan-techie-friends-campus-iit.webp',
                 alt: 'Campus friends',
                 title: 'Squad Goals',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-speaking-on-stage-2025.jpg',
+                src: './album/aryan-techie-speaking-on-stage-2025.webp',
                 alt: 'Speaking on stage',
                 title: 'Speaking Engagement',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-whiteboard-presentation-snap.jpg',
+                src: './album/aryan-techie-whiteboard-presentation-snap.webp',
                 alt: 'Teaching moment',
                 title: 'Teaching Session',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-roadside-sunset-glasses-iitp-iit-2025.jpg',
+                src: './album/aryan-techie-roadside-sunset-glasses-iitp-iit-2025.webp',
                 alt: 'Golden hour portrait',
                 title: 'Sunset Vibes',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-swimming-pool-fun-2025.jpg',
+                src: './album/aryan-techie-swimming-pool-fun-2025.webp',
                 alt: 'Pool day fun',
                 title: 'Pool Day',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-winter-cap-campus-portrait-iit-patna-2025.jpg',
+                src: './album/aryan-techie-winter-cap-campus-portrait-iit-patna-2025.webp',
                 alt: 'Winter campus portrait',
                 title: 'Winter Campus',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-with-book-stack-headphones-2025.jpg',
+                src: './album/aryan-techie-with-book-stack-headphones-2025.webp',
                 alt: 'Study session with books',
                 title: 'Study Mode',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-airplane-sitting-wide-2025.jpg',
+                src: './album/aryan-techie-airplane-sitting-wide-2025.webp',
                 alt: 'Airplane travel',
                 title: 'Flight Journey',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-below-shot-lightflare-moody-car-2025.jpg',
+                src: './album/aryan-techie-below-shot-lightflare-moody-car-2025.webp',
                 alt: 'Moody car portrait',
                 title: 'Moody Car Shot',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-blindfold-risk-poster-style-2025.jpg',
+                src: './album/aryan-techie-blindfold-risk-poster-style-2025.webp',
                 alt: 'Artistic poster style',
                 title: 'Poster Style',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-books-closeup-intense-read-2025.png',
+                src: './album/aryan-techie-books-closeup-intense-read-2025.webp',
                 alt: 'Intense reading moment',
                 title: 'Deep Focus',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-campus-corridor-side-glance-gym-gymkhana-iit.jpg',
+                src: './album/aryan-techie-campus-corridor-side-glance-gym-gymkhana-iit.webp',
                 alt: 'Campus corridor portrait',
                 title: 'Campus Corridor',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-candid-indoors-eyeglasses-airport.jpg',
+                src: './album/aryan-techie-candid-indoors-eyeglasses-airport.webp',
                 alt: 'Candid airport moment',
                 title: 'Airport Candid',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-closeup-watch-side-glance-aeroplane.jpg',
+                src: './album/aryan-techie-closeup-watch-side-glance-aeroplane.webp',
                 alt: 'Travel watch closeup',
                 title: 'Time to Fly',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-crowd-selfie-hyperreal-2025.jpg',
+                src: './album/aryan-techie-crowd-selfie-hyperreal-2025.webp',
                 alt: 'Crowd selfie moment',
                 title: 'Crowd Moment',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-duo-plane-travel-look.jpg',
+                src: './album/aryan-techie-duo-plane-travel-look.webp',
                 alt: 'Travel duo shot',
                 title: 'Travel Duo',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-eyestore-shot.jpg',
+                src: './album/aryan-techie-eyestore-shot.webp',
                 alt: 'Eyewear store visit',
                 title: 'Eyewear Shopping',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-face-close-hand-cover-style.jpg',
+                src: './album/aryan-techie-face-close-hand-cover-style.webp',
                 alt: 'Artistic hand cover pose',
                 title: 'Artistic Portrait',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-finger-candid-friends-aeroplane-flight-2025.jpg',
+                src: './album/aryan-techie-finger-candid-friends-aeroplane-flight-2025.webp',
                 alt: 'Flight candid moment',
                 title: 'Flight Candid',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-friends-iit-runway.jpg',
+                src: './album/aryan-techie-friends-iit-runway.webp',
                 alt: 'Runway with friends',
                 title: 'Runway Squad',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-mirror-photo-eyewear-store.jpg',
+                src: './album/aryan-techie-mirror-photo-eyewear-store.webp',
                 alt: 'Mirror shot at eyewear store',
                 title: 'Mirror Reflection',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-seated-iit-campus-2025.jpg',
+                src: './album/aryan-techie-seated-iit-campus-2025.webp',
                 alt: 'Seated campus portrait',
                 title: 'Campus Relaxed',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-shirt-mirror-hallway-2025.jpg',
+                src: './album/aryan-techie-shirt-mirror-hallway-2025.webp',
                 alt: 'Hallway mirror shot',
                 title: 'Hallway Mirror',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-side-light-dramatic-god-text.jpg',
+                src: './album/aryan-techie-side-light-dramatic-god-text.webp',
                 alt: 'Dramatic side lighting',
                 title: 'Dramatic Lighting',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-side-mirror-drive-mood.jpg',
+                src: './album/aryan-techie-side-mirror-drive-mood.webp',
                 alt: 'Car mirror mood shot',
                 title: 'Drive Mode',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-sitting-chilled-indoor-shot.jpg',
+                src: './album/aryan-techie-sitting-chilled-indoor-shot.webp',
                 alt: 'Relaxed indoor moment',
                 title: 'Chill Vibes',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-sitting-yellow-barrier-iit-campus-2025.jpg',
+                src: './album/aryan-techie-sitting-yellow-barrier-iit-campus-2025.webp',
                 alt: 'Campus barrier portrait',
                 title: 'Campus Barriers',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-smiling-airforce.jpg',
+                src: './album/aryan-techie-smiling-airforce.webp',
                 alt: 'Smiling airforce portrait',
                 title: 'Airforce Smile',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-standing-iit-patna-signboard-2025.jpg',
+                src: './album/aryan-techie-standing-iit-patna-signboard-2025.webp',
                 alt: 'IIT Patna signboard',
                 title: 'IIT Patna Pride',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-sunset-walk-flyover-view.jpg',
+                src: './album/aryan-techie-sunset-walk-flyover-view.webp',
                 alt: 'Sunset flyover walk',
                 title: 'Sunset Walk',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-upward-look-palm-tree-vibe-iit.jpg',
+                src: './album/aryan-techie-upward-look-palm-tree-vibe-iit.webp',
                 alt: 'Palm tree campus vibe',
                 title: 'Palm Tree Dreams',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-white-shirt-mirror-cleanlook.jpg',
+                src: './album/aryan-techie-white-shirt-mirror-cleanlook.webp',
                 alt: 'Clean white shirt look',
                 title: 'Clean Look',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-window-look-light-contrast-train.jpg',
+                src: './album/aryan-techie-window-look-light-contrast-train.webp',
                 alt: 'Train window lighting',
                 title: 'Train Journey',
                 year: '2024'
             },
             {
-                src: './album/aryan-techie-with-friend-airforce-plane-2025.jpg',
+                src: './album/aryan-techie-with-friend-airforce-plane-2025.webp',
                 alt: 'Airforce plane with friend',
                 title: 'Airforce Adventure',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-with-friend-winter-2024.jpg.jpg',
+                src: './album/aryan-techie-with-friend-winter-2024.webp.webp',
                 alt: 'Winter moment with friend',
                 title: 'Winter Friendship',
                 year: '2024'
@@ -331,38 +340,168 @@ class PhotoCollage {
 
     createCollage() {
         // Shuffle photos on each load
-        const shuffledPhotos = this.shuffleArray(this.photos);
+        this.shuffledPhotos = this.shuffleArray(this.photos);
         
         // Clear existing content
         this.photoContainer.innerHTML = '';
+        this.loadedPhotos = 0;
         
-        // Progressive loading for better mobile performance
-        const isMobile = window.innerWidth <= 768;
-        const batchSize = isMobile ? 10 : 15;
-        let loadedCount = 0;
-        
-        const loadBatch = (startIndex) => {
-            const endIndex = Math.min(startIndex + batchSize, shuffledPhotos.length);
-            const batch = shuffledPhotos.slice(startIndex, endIndex);
-            
+        // Load initial batch (Instagram-style)
+        this.loadMorePhotos();
+    }
+
+    loadMorePhotos() {
+        if (this.isLoading || this.loadedPhotos >= this.shuffledPhotos.length) {
+            return;
+        }
+
+        this.isLoading = true;
+        this.showLoadingIndicator();
+
+        const startIndex = this.loadedPhotos;
+        const endIndex = Math.min(startIndex + this.photosPerLoad, this.shuffledPhotos.length);
+        const batch = this.shuffledPhotos.slice(startIndex, endIndex);
+
+        // Simulate network delay for smoother experience (like Instagram)
+        setTimeout(() => {
             batch.forEach((photo, index) => {
                 const photoItem = this.createPhotoElement(photo, startIndex + index);
                 this.photoContainer.appendChild(photoItem);
+                
+                // Stagger the appearance for smooth loading effect
+                setTimeout(() => {
+                    photoItem.style.opacity = '1';
+                    photoItem.style.transform = 'translateY(0)';
+                }, index * 50);
             });
-            
-            loadedCount = endIndex;
-            
-            // Load next batch if there are more photos
-            if (loadedCount < shuffledPhotos.length) {
-                setTimeout(() => loadBatch(loadedCount), isMobile ? 200 : 100);
-            }
+
+            this.loadedPhotos = endIndex;
+            this.isLoading = false;
+            this.hideLoadingIndicator();
+
+            // Setup lazy loading for new images
+            this.setupLazyLoading();
+        }, 300);
+    }
+
+    showLoadingIndicator() {
+        const existingLoader = document.querySelector('.infinite-loader');
+        if (existingLoader) return;
+
+        const loader = document.createElement('div');
+        loader.className = 'infinite-loader';
+        loader.innerHTML = `
+            <div class="loader-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        `;
+        
+        this.photoContainer.parentNode.appendChild(loader);
+        
+        // Add loader styles if not already present
+        if (!document.getElementById('infinite-loader-styles')) {
+            const styles = document.createElement('style');
+            styles.id = 'infinite-loader-styles';
+            styles.textContent = `
+                .infinite-loader {
+                    display: flex;
+                    justify-content: center;
+                    padding: 40px 20px;
+                    width: 100%;
+                }
+                
+                .loader-dots {
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                }
+                
+                .dot {
+                    width: 8px;
+                    height: 8px;
+                    background: rgba(255, 255, 255, 0.6);
+                    border-radius: 50%;
+                    animation: dotPulse 1.4s ease-in-out infinite both;
+                }
+                
+                .dot:nth-child(1) { animation-delay: -0.32s; }
+                .dot:nth-child(2) { animation-delay: -0.16s; }
+                .dot:nth-child(3) { animation-delay: 0s; }
+                
+                @keyframes dotPulse {
+                    0%, 80%, 100% {
+                        transform: scale(0.8);
+                        opacity: 0.5;
+                    }
+                    40% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(styles);
+        }
+    }
+
+    hideLoadingIndicator() {
+        const loader = document.querySelector('.infinite-loader');
+        if (loader) {
+            loader.remove();
+        }
+    }
+
+    setupInfiniteScroll() {
+        // Create intersection observer for infinite scroll
+        const options = {
+            root: null,
+            rootMargin: '200px',
+            threshold: 0.1
         };
+
+        this.intersectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.isLoading && this.loadedPhotos < this.shuffledPhotos.length) {
+                    this.loadMorePhotos();
+                }
+            });
+        }, options);
+
+        // Create a sentinel element at the bottom
+        const sentinel = document.createElement('div');
+        sentinel.className = 'scroll-sentinel';
+        sentinel.style.height = '1px';
+        sentinel.style.width = '100%';
+        this.photoContainer.parentNode.appendChild(sentinel);
         
-        // Start loading
-        loadBatch(0);
-        
-        // Setup lazy loading after creating elements
-        setTimeout(() => this.setupLazyLoading(), 150);
+        this.intersectionObserver.observe(sentinel);
+    }
+
+    disableRightClick() {
+        // Disable right-click context menu on images
+        this.photoContainer.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG' || e.target.closest('.photo-item')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable drag on images for better UX
+        this.photoContainer.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // Disable text selection on image containers
+        this.photoContainer.addEventListener('selectstart', (e) => {
+            if (e.target.closest('.photo-item')) {
+                e.preventDefault();
+                return false;
+            }
+        });
     }
 
     createPhotoElement(photo, index) {
@@ -372,7 +511,14 @@ class PhotoCollage {
         photoItem.setAttribute('role', 'button');
         photoItem.setAttribute('aria-label', `View photo: ${photo.alt}`);
         
-        // Set a minimum height to prevent layout shift
+        // SEO: Add structured data for images
+        photoItem.setAttribute('itemscope', '');
+        photoItem.setAttribute('itemtype', 'https://schema.org/ImageObject');
+        
+        // Set initial state for smooth entrance
+        photoItem.style.opacity = '0';
+        photoItem.style.transform = 'translateY(30px)';
+        photoItem.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
         photoItem.style.minHeight = '280px';
         
         const img = document.createElement('img');
@@ -380,9 +526,26 @@ class PhotoCollage {
         img.alt = photo.alt;
         img.loading = 'lazy';
         
-        // Store photo data for modal
+        // SEO: Enhanced meta attributes for search engines
+        img.setAttribute('itemprop', 'contentUrl');
+        img.setAttribute('data-title', photo.title);
+        img.setAttribute('data-year', photo.year);
+        
+        // Store photo data for modal and SEO
         photoItem.dataset.title = photo.title;
         photoItem.dataset.year = photo.year;
+        photoItem.dataset.src = photo.src;
+        
+        // Add hidden structured data for SEO
+        const metaData = document.createElement('meta');
+        metaData.setAttribute('itemprop', 'name');
+        metaData.setAttribute('content', `${photo.title} - ${photo.year}`);
+        photoItem.appendChild(metaData);
+        
+        const metaDescription = document.createElement('meta');
+        metaDescription.setAttribute('itemprop', 'description');
+        metaDescription.setAttribute('content', photo.alt);
+        photoItem.appendChild(metaDescription);
         
         img.addEventListener('load', () => {
             photoItem.classList.remove('loading');
@@ -569,30 +732,29 @@ class PhotoCollage {
     }
 
     setupLazyLoading() {
-        // Use Intersection Observer for performance
+        // Enhanced lazy loading for infinite scroll
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const img = entry.target;
-                        if (img.dataset.src) {
+                        if (img.dataset.src && !img.src) {
                             img.src = img.dataset.src;
                             img.removeAttribute('data-src');
-                            imageObserver.unobserve(img);
                         }
+                        imageObserver.unobserve(img);
                     }
                 });
             }, {
-                rootMargin: '50px 0px',
+                rootMargin: '100px 0px',
                 threshold: 0.01
             });
 
-            // Observe images
-            const images = this.photoContainer.querySelectorAll('img');
+            // Observe all images in the current batch
+            const images = this.photoContainer.querySelectorAll('img:not([data-observed])');
             images.forEach(img => {
-                if (img.dataset.src) {
-                    imageObserver.observe(img);
-                }
+                img.setAttribute('data-observed', 'true');
+                imageObserver.observe(img);
             });
         }
     }
@@ -616,3 +778,14 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// Performance optimization: Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+    // Clean up observers and event listeners
+    if (window.photoCollageInstance && window.photoCollageInstance.intersectionObserver) {
+        window.photoCollageInstance.intersectionObserver.disconnect();
+    }
+});
+
+// Global instance for cleanup
+window.photoCollageInstance = null;

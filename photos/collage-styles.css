@@ -159,7 +159,7 @@ body {
     line-height: 0;
 }
 
-/* Photo Items - Enhanced */
+/* Enhanced Photo Items - Infinite Scroll Ready */
 .photo-item {
     position: relative;
     display: inline-block;
@@ -169,15 +169,21 @@ body {
     border-radius: 12px;
     background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
     cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     will-change: transform;
     break-inside: avoid;
     page-break-inside: avoid;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    
+    /* Disable user selection and context menu */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-context-menu: none;
 }
 
 .photo-item::before {
@@ -196,23 +202,43 @@ body {
 }
 
 .photo-item:nth-child(odd) {
-    animation-delay: 0.1s;
     transform: translateY(2px);
 }
 
 .photo-item:nth-child(even) {
-    animation-delay: 0.2s;
     transform: translateY(-1px);
 }
 
 .photo-item:nth-child(3n) {
-    animation-delay: 0.3s;
     transform: translateY(1px);
 }
 
 /* Touch states for mobile */
 .photo-item:active {
     transform: translateY(-2px) scale(0.97);
+}
+
+/* Infinite scroll loading states */
+.photo-item.entering {
+    animation: slideInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Scroll sentinel for infinite loading */
+.scroll-sentinel {
+    height: 1px;
+    width: 100%;
+    background: transparent;
 }
 
 @keyframes fadeInUp {

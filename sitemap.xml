@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
@@ -34,10 +35,41 @@
   </url>
 
   <url>
-    <loc>https://aroice.in/photos</loc>
+    <loc>https://aroice.in/photos/</loc>
     <lastmod>2025-07-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    
+    <!-- Key images for SEO -->
+    <image:image>
+      <image:loc>https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp</image:loc>
+      <image:title>Campus Portrait at IIT Patna</image:title>
+      <image:caption>Aryan at IIT Patna campus - 2025</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp</image:loc>
+      <image:title>Professional Mirror Portrait</image:title>
+      <image:caption>Formal portrait in mirror - 2025</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://aroice.in/photos/album/aryan-techie-laptop-setup-grind-late-night-2025.webp</image:loc>
+      <image:title>Late Night Coding Session</image:title>
+      <image:caption>Developer workspace late night coding - 2025</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://aroice.in/photos/album/aryan-techie-airforce-plane-background-sitting-2025.webp</image:loc>
+      <image:title>Aviation Themed Portrait</image:title>
+      <image:caption>Portrait with aviation background - 2025</image:caption>
+    </image:image>
+    
+    <image:image>
+      <image:loc>https://aroice.in/photos/album/aryan-techie-dual-color-portrait-editorial-2025.webp</image:loc>
+      <image:title>Editorial Dual Color Portrait</image:title>
+      <image:caption>Professional editorial style portrait - 2025</image:caption>
+    </image:image>
   </url>
 
   <!-- Legal Pages -->
