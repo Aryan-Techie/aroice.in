@@ -13,6 +13,13 @@ class PhotoCollage {
         this.photosPerLoad = 12; // Instagram-like loading
         this.intersectionObserver = null;
         
+        // Search functionality properties
+        this.searchOverlay = null;
+        this.searchInput = null;
+        this.searchResults = [];
+        this.currentFilter = 'all';
+        this.currentSort = 'relevance';
+        
         // Store global reference for cleanup
         window.photoCollageInstance = this;
         
@@ -22,6 +29,7 @@ class PhotoCollage {
         this.setupInfiniteScroll();
         this.disableRightClick();
         this.initializeHeaderControls();
+        this.initializeSearch();
         this.updatePhotoCounter();
     }
 
@@ -1088,6 +1096,14 @@ class PhotoCollage {
             });
         }
 
+        // Search button functionality
+        const searchBtn = document.querySelector('.search-btn');
+        if (searchBtn) {
+            searchBtn.addEventListener('click', () => {
+                this.openSearch();
+            });
+        }
+
         // Listen for fullscreen changes to update button icon
         document.addEventListener('fullscreenchange', () => {
             this.updateFullscreenButton();
@@ -1153,6 +1169,312 @@ class PhotoCollage {
             const progress = (this.loadedPhotos / this.photos.length) * 100;
             progressBar.style.width = `${progress}%`;
         }
+    }
+
+    // ===== SEARCH FUNCTIONALITY =====
+
+    initializeSearch() {
+        this.searchOverlay = document.getElementById('search-overlay');
+        this.searchInput = document.getElementById('search-input');
+        
+        if (!this.searchOverlay || !this.searchInput) return;
+
+        // Close search overlay
+        const closeBtn = this.searchOverlay.querySelector('.search-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeSearch());
+        }
+
+
+        // Close on click outside the search container
+        this.searchOverlay.addEventListener('mousedown', (e) => {
+            // Only close if click is NOT inside .search-container
+            const container = this.searchOverlay.querySelector('.search-container');
+            if (container && !container.contains(e.target)) {
+                this.closeSearch();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.searchOverlay.classList.contains('active')) {
+                this.closeSearch();
+            }
+            
+            // Enter key in search input
+            if (e.key === 'Enter' && e.target === this.searchInput) {
+                const firstResult = this.searchOverlay.querySelector('.search-result-item');
+                if (firstResult) {
+                    firstResult.click();
+                }
+            }
+        });
+
+        // Search input functionality
+        this.searchInput.addEventListener('input', (e) => {
+            this.performSearch(e.target.value);
+        });
+
+        // Clear search button
+        const clearBtn = document.getElementById('search-clear');
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => {
+                this.searchInput.value = '';
+                this.searchInput.focus();
+                this.performSearch('');
+            });
+        }
+
+        // Filter buttons
+        const filterBtns = this.searchOverlay.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                this.setFilter(btn.dataset.filter);
+                this.updateFilterButtons(btn);
+                this.performSearch(this.searchInput.value);
+            });
+        });
+
+        // Sort button
+        const sortBtn = document.getElementById('results-sort');
+        if (sortBtn) {
+            sortBtn.addEventListener('click', () => {
+                this.toggleSort();
+            });
+        }
+
+        // Initialize with all photos
+        this.performSearch('');
+    }
+
+    openSearch() {
+        if (!this.searchOverlay) return;
+        
+        this.searchOverlay.classList.add('active');
+        document.body.classList.add('search-active');
+        document.body.style.overflow = 'hidden';
+        
+        // Focus search input after animation
+        setTimeout(() => {
+            if (this.searchInput) {
+                this.searchInput.focus();
+            }
+        }, 400);
+
+        // Load all photos for search if not already loaded
+        this.performSearch(this.searchInput.value || '');
+    }
+
+    closeSearch() {
+        if (!this.searchOverlay) return;
+        
+        this.searchOverlay.classList.remove('active');
+        document.body.classList.remove('search-active');
+        document.body.style.overflow = '';
+        
+        // Clear search input
+        if (this.searchInput) {
+            this.searchInput.value = '';
+        }
+        
+        // Reset filter
+        this.setFilter('all');
+        this.updateFilterButtons(this.searchOverlay.querySelector('[data-filter="all"]'));
+        
+        // Update clear button visibility
+        const clearBtn = document.getElementById('search-clear');
+        if (clearBtn) {
+            clearBtn.classList.remove('visible');
+        }
+    }
+
+    performSearch(query) {
+        const trimmedQuery = query.trim().toLowerCase();
+        
+        // Update clear button visibility
+        const clearBtn = document.getElementById('search-clear');
+        if (clearBtn) {
+            clearBtn.classList.toggle('visible', trimmedQuery.length > 0);
+        }
+
+        // Filter photos based on query and current filter
+        this.searchResults = this.photos.filter(photo => {
+            const matchesQuery = this.matchesSearchQuery(photo, trimmedQuery);
+            const matchesFilter = this.matchesFilter(photo);
+            return matchesQuery && matchesFilter;
+        });
+
+        // Sort results
+        this.sortSearchResults(trimmedQuery);
+
+        // Display results
+        this.displaySearchResults(trimmedQuery);
+
+        // Update results count
+        this.updateResultsCount();
+    }
+
+    matchesSearchQuery(photo, query) {
+        if (!query) return true;
+
+        const searchableText = [
+            photo.title,
+            photo.alt,
+            photo.year,
+            photo.title.includes('iit') ? 'iit patna campus' : '',
+            photo.title.includes('developer') || photo.title.includes('dev') ? 'developer programming coding' : '',
+            photo.title.includes('mirror') ? 'selfie mirror' : '',
+            photo.title.includes('portrait') ? 'portrait headshot' : '',
+            photo.title.includes('travel') || photo.title.includes('airport') || photo.title.includes('plane') ? 'travel aviation flight' : '',
+            photo.title.includes('gym') ? 'fitness workout gym' : '',
+            photo.title.includes('creative') ? 'artistic creative art' : ''
+        ].join(' ').toLowerCase();
+
+        return searchableText.includes(query);
+    }
+
+    matchesFilter(photo) {
+        switch (this.currentFilter) {
+            case 'all':
+                return true;
+            case '2025':
+                return photo.year === '2025';
+            case 'iit':
+                return photo.title.toLowerCase().includes('iit') || photo.title.toLowerCase().includes('campus');
+            case 'developer':
+                return photo.title.toLowerCase().includes('dev') || photo.title.toLowerCase().includes('coding') || photo.title.toLowerCase().includes('terminal');
+            case 'portrait':
+                return photo.title.toLowerCase().includes('portrait') || photo.title.toLowerCase().includes('headshot') || photo.title.toLowerCase().includes('mirror');
+            case 'travel':
+                return photo.title.toLowerCase().includes('travel') || photo.title.toLowerCase().includes('airport') || photo.title.toLowerCase().includes('plane') || photo.title.toLowerCase().includes('flight');
+            default:
+                return true;
+        }
+    }
+
+    sortSearchResults(query) {
+        if (this.currentSort === 'relevance' && query) {
+            // Sort by relevance (title matches first, then other matches)
+            this.searchResults.sort((a, b) => {
+                const aTitle = a.title.toLowerCase().includes(query);
+                const bTitle = b.title.toLowerCase().includes(query);
+                
+                if (aTitle && !bTitle) return -1;
+                if (!aTitle && bTitle) return 1;
+                
+                // Secondary sort by year (newest first)
+                return b.year.localeCompare(a.year);
+            });
+        } else if (this.currentSort === 'year') {
+            this.searchResults.sort((a, b) => b.year.localeCompare(a.year));
+        } else if (this.currentSort === 'title') {
+            this.searchResults.sort((a, b) => a.title.localeCompare(b.title));
+        }
+    }
+
+    displaySearchResults(query) {
+        const resultsGrid = document.getElementById('search-results-grid');
+        if (!resultsGrid) return;
+
+        if (this.searchResults.length === 0) {
+            resultsGrid.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h4>No photos found</h4>
+                    <p>Try adjusting your search terms or filters</p>
+                </div>
+            `;
+            return;
+        }
+
+        resultsGrid.innerHTML = this.searchResults.map(photo => {
+            const highlightedTitle = this.highlightSearchTerms(photo.title, query);
+            
+            return `
+                <div class="search-result-item" data-src="${photo.src}" data-title="${photo.title}" data-year="${photo.year}">
+                    <img src="${photo.src}" alt="${photo.alt}" loading="lazy">
+                    <div class="search-result-info">
+                        <div class="search-result-title">${highlightedTitle}</div>
+                        <div class="search-result-year">${photo.year}</div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Add click handlers to search results
+        resultsGrid.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', () => {
+                // Find the corresponding photo object from this.photos
+                const src = item.dataset.src;
+                const photo = this.photos.find(p => p.src === src);
+                if (!photo) return;
+                // Close search first
+                this.closeSearch();
+                // Open modal after search animation completes
+                setTimeout(() => {
+                    this.openModal(item);
+                }, 400);
+            });
+            
+            // Add hover effect
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-3px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    }
+
+    highlightSearchTerms(text, query) {
+        if (!query) return text;
+        
+        const regex = new RegExp(`(${query})`, 'gi');
+        return text.replace(regex, '<span class="search-highlight">$1</span>');
+    }
+
+    updateResultsCount() {
+        const countElement = this.searchOverlay.querySelector('.results-count');
+        if (countElement) {
+            const total = this.searchResults.length;
+            const filterText = this.currentFilter === 'all' ? 'photos' : `${this.currentFilter} photos`;
+            countElement.textContent = `${total} ${filterText}`;
+        }
+    }
+
+    setFilter(filter) {
+        this.currentFilter = filter;
+    }
+
+    updateFilterButtons(activeBtn) {
+        const filterBtns = this.searchOverlay.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => btn.classList.remove('active'));
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+        }
+    }
+
+    toggleSort() {
+        const sortBtn = document.getElementById('results-sort');
+        if (!sortBtn) return;
+
+        const sortOptions = ['relevance', 'year', 'title'];
+        const currentIndex = sortOptions.indexOf(this.currentSort);
+        const nextIndex = (currentIndex + 1) % sortOptions.length;
+        this.currentSort = sortOptions[nextIndex];
+
+        // Update button text
+        const sortLabels = {
+            'relevance': 'Sort by relevance',
+            'year': 'Sort by year',
+            'title': 'Sort by title'
+        };
+
+        sortBtn.innerHTML = `<i class="fas fa-sort"></i> ${sortLabels[this.currentSort]}`;
+
+        // Re-perform search with new sort
+        this.performSearch(this.searchInput.value || '');
     }
 }
 

@@ -257,6 +257,11 @@
                     <button class="control-btn fullscreen-btn" title="Toggle Fullscreen" aria-label="Toggle fullscreen mode">
                         <i class="fas fa-expand" aria-hidden="true"></i>
                     </button>
+                    <!-- search button -->
+                    <button class="control-btn search-btn" title="Search Photos" aria-label="Search through photo gallery">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+
                     <div class="photo-counter">
                         <span class="counter-text">
                             <span id="photos-loaded">0</span> / <span id="total-photos">0</span>
@@ -269,6 +274,44 @@
         <!-- Progress bar for loading -->
         <div class="loading-progress">
             <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        
+        <!-- Search Overlay -->
+        <div class="search-overlay" id="search-overlay">
+            <div class="search-overlay-blur"></div>
+            <div class="search-container">
+                <div class="search-header">
+                    <h3>Search Photos</h3>
+                    <button class="search-close" aria-label="Close search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-input-container">
+                    <input type="text" id="search-input" placeholder="Search by title, year, or description..." autocomplete="off">
+                    <button class="search-clear" id="search-clear" title="Clear search">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="2025">2025</button>
+                    <button class="filter-btn" data-filter="iit">IIT Patna</button>
+                    <button class="filter-btn" data-filter="developer">Developer</button>
+                    <button class="filter-btn" data-filter="portrait">Portrait</button>
+                    <button class="filter-btn" data-filter="travel">Travel</button>
+                </div>
+                <div class="search-results">
+                    <div class="search-results-header">
+                        <span class="results-count">All photos (81)</span>
+                        <button class="results-sort" id="results-sort">
+                            <i class="fas fa-sort"></i> Sort by relevance
+                        </button>
+                    </div>
+                    <div class="search-results-grid" id="search-results-grid">
+                        <!-- Search results will be populated here -->
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
