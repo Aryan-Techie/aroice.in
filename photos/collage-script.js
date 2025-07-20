@@ -327,6 +327,187 @@ class PhotoCollage {
                 alt: 'Winter moment with friend',
                 title: 'Winter Friendship',
                 year: '2024'
+            },
+            // New 2025 Photos
+            {
+                src: './album/aryan-jangra-aroice-portrait-2025.webp',
+                alt: 'Professional portrait of Aryan Jangra (Aroice)',
+                title: 'Aroice Portrait',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-jangra-iit-patna-gate-2025.webp',
+                alt: 'At IIT Patna main gate',
+                title: 'IIT Patna Gateway',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-airport-window-travel-2025.webp',
+                alt: 'Airport window view during travel',
+                title: 'Travel Vibes',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-bonfire-warm-tones-2025.webp',
+                alt: 'Warm bonfire evening moment',
+                title: 'Bonfire Nights',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-campus-lawn-portrait-2025.webp',
+                alt: 'Portrait on campus lawn',
+                title: 'Campus Lawn Moment',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-colorful-selfie-2025.webp',
+                alt: 'Vibrant colorful selfie',
+                title: 'Colorful Vibes',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-creative-edit-double-exposure-2025.webp',
+                alt: 'Creative double exposure artistic edit',
+                title: 'Double Exposure Art',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-dev-terminal-notes-2025.webp',
+                alt: 'Developer workspace with terminal and notes',
+                title: 'Dev Mode',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-developer-gym-mirror-2025.webp',
+                alt: 'Developer lifestyle gym mirror shot',
+                title: 'Gym Grind',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-developer-vibes-gym-2025.webp',
+                alt: 'Developer vibes at gym',
+                title: 'Developer Fitness',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-empty-road-night-aesthetic-2025.webp',
+                alt: 'Aesthetic night view of empty road',
+                title: 'Night Road',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-evening-light-2025.webp',
+                alt: 'Beautiful evening light portrait',
+                title: 'Golden Hour',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-face-selfie-2025.webp',
+                alt: 'Close-up face selfie',
+                title: 'Face Focus',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-hand-holding-rose-2025.webp',
+                alt: 'Hand holding a rose',
+                title: 'Rose Moment',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-headshot-glasses-2025.webp',
+                alt: 'Professional headshot with glasses',
+                title: 'Professional Look',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-mirror-selfie-aroice-2025.webp',
+                alt: 'Mirror selfie by Aroice',
+                title: 'Mirror Reflection',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-monochrome-portrait-art-2025.webp',
+                alt: 'Artistic monochrome portrait',
+                title: 'Monochrome Art',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-moody-road-trees-2025.webp',
+                alt: 'Moody road surrounded by trees',
+                title: 'Moody Path',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-phone-screenshot-notes-2025.webp',
+                alt: 'Phone screenshot of notes and ideas',
+                title: 'Digital Notes',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-plane-wing-flight-above-clouds-2025.webp',
+                alt: 'Airplane wing view above clouds',
+                title: 'Above the Clouds',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-quote-moment-1-2025.webp',
+                alt: 'Inspirational quote moment',
+                title: 'Quote Inspiration',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-shadow-walking-topdown-2025.webp',
+                alt: 'Top-down view of walking shadow',
+                title: 'Shadow Walk',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-silhouette-campus-2025.webp',
+                alt: 'Silhouette on campus',
+                title: 'Campus Silhouette',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-sunset-shadow-art-2025.webp',
+                alt: 'Artistic sunset shadow composition',
+                title: 'Sunset Shadows',
+                year: '2025'
+            },
+            {
+                src: './album/aryan-techie-video-editing-workflow-2025.webp',
+                alt: 'Video editing workflow setup',
+                title: 'Creative Workflow',
+                year: '2025'
+            },
+            {
+                src: './album/memento-mori-aryantechie-cal.webp',
+                alt: 'Memento mori artistic calendar moment',
+                title: 'Memento Mori',
+                year: '2025'
+            },
+            {
+                src: './album/memory-in-motion-1-2025.webp',
+                alt: 'Memory in motion series - part 1',
+                title: 'Memory in Motion I',
+                year: '2025'
+            },
+            {
+                src: './album/memory-in-motion-2-2025.webp',
+                alt: 'Memory in motion series - part 2',
+                title: 'Memory in Motion II',
+                year: '2025'
+            },
+            {
+                src: './album/memory-in-motion-3-2025.webp',
+                alt: 'Memory in motion series - part 3',
+                title: 'Memory in Motion III',
+                year: '2025'
+            },
+            {
+                src: './album/memory-in-motion-4-2025.webp',
+                alt: 'Memory in motion series - part 4',
+                title: 'Memory in Motion IV',
+                year: '2025'
             }
         ];
     }

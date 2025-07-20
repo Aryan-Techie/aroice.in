@@ -284,6 +284,7 @@ body {
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+    align-self: start; /* Prevent grid stretching */
     
     /* Disable user selection and context menu */
     -webkit-user-select: none;
@@ -363,9 +364,10 @@ body {
 /* Photo Images - Stable Layout */
 .photo-item img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center;
     transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     filter: brightness(0.95) contrast(1.05) saturate(1.08);
     user-select: none;
@@ -375,7 +377,6 @@ body {
     z-index: 0;
     
     /* Prevent layout shifts during loading */
-    min-height: 200px;
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
 }
 
@@ -723,7 +724,7 @@ body {
 
 @media (max-width: 768px) {
     .gallery-container {
-        margin-top: 70px;
+        margin-top: 75px;
         padding: 20px 12px;
     }
     
@@ -744,7 +745,8 @@ body {
     }
     
     .gallery-nav {
-        padding: 10px 12px;
+        padding: 12px 15px;
+        align-items: center;
     }
     
     .title-main {
@@ -758,6 +760,9 @@ body {
     .back-link {
         font-size: 13px;
         padding: 6px 10px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
     }
     
     .header-controls {
@@ -768,10 +773,15 @@ body {
         width: 30px;
         height: 30px;
         font-size: 11px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
     }
     
     .photo-counter {
         padding: 3px 6px;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
     }
     
     .counter-text {
@@ -857,7 +867,7 @@ body {
 @media (max-width: 480px) {
     .gallery-container {
         padding: 15px 8px;
-        margin-top: 65px;
+        margin-top: 85px; /* Increased for better spacing */
     }
     
     .photo-collage {
@@ -872,64 +882,80 @@ body {
     
     .gallery-header {
         padding: 0;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(20px);
     }
     
     .gallery-nav {
-        padding: 8px 8px;
-        flex-direction: column;
+        padding: 10px 12px;
+        flex-direction: row; /* Keep horizontal layout */
         gap: 8px;
-    }
-    
-    .nav-left,
-    .nav-center,
-    .nav-right {
-        flex: none;
-        width: 100%;
-    }
-    
-    .nav-center {
-        order: -1;
+        align-items: center;
+        justify-content: space-between;
     }
     
     .nav-left {
-        justify-content: center;
+        flex: 0 0 auto;
+        justify-content: flex-start;
+    }
+    
+    .nav-center {
+        flex: 1;
+        text-align: center;
+        order: 0; /* Keep natural order */
     }
     
     .nav-right {
-        justify-content: center;
+        flex: 0 0 auto;
+        justify-content: flex-end;
     }
     
     .title-main {
-        font-size: 14px;
+        font-size: 13px;
+        font-weight: 600;
     }
     
     .title-subtitle {
-        font-size: 9px;
+        font-size: 8px;
+        opacity: 0.8;
+        margin-top: 1px;
     }
     
     .back-link {
-        font-size: 12px;
-        gap: 6px;
-        padding: 4px 8px;
+        font-size: 11px;
+        gap: 4px;
+        padding: 6px 10px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
     }
     
     .header-controls {
-        gap: 4px;
-        justify-content: center;
+        gap: 6px;
+        justify-content: flex-end;
+        align-items: center;
     }
     
     .control-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
     }
     
     .photo-counter {
-        padding: 2px 4px;
+        padding: 4px 8px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        margin-left: 4px;
     }
     
     .counter-text {
-        font-size: 9px;
+        font-size: 10px;
+        font-weight: 500;
     }
     
     .gallery-heading {
