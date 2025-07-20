@@ -37,31 +37,31 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-formal-fit-mirror-portrait-2025.webp',
                 alt: 'Professional portrait in mirror',
-                title: 'Formal Mirror Portrait',
+                title: 'on the way',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-reading-in-library-2025.webp',
-                alt: 'Reading in library',
-                title: 'Library Study Session',
+                alt: 'Reading in my library',
+                title: 'With My Books',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-laptop-setup-grind-late-night-2025.webp',
                 alt: 'Late night coding session',
-                title: 'Late Night Coding',
+                title: 'Late Night',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-airforce-plane-background-sitting-2025.webp',
-                alt: 'Aviation themed portrait',
-                title: 'Aviation Dreams',
+                alt: 'captured moment with my bro',
+                title: 'with my bro',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-plane-window-aesthetic-lookout-2025.webp',
                 alt: 'Looking out airplane window',
-                title: 'Sky High Views',
+                title: 'Sky High View',
                 year: '2025'
             },
             {
@@ -72,8 +72,8 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-dual-color-portrait-editorial-2025.webp',
-                alt: 'Editorial portrait with dual colors',
-                title: 'Dual Color Editorial',
+                alt: 'Editorial portrait with dual colors, reflection is it me',
+                title: 'is it me?',
                 year: '2025'
             },
             {
@@ -85,7 +85,7 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-back-profile-edited-glow-effect-2025.webp',
                 alt: 'Back profile with glow effect',
-                title: 'Golden Hour Glow',
+                title: 'Thats Me',
                 year: '2025'
             },
             {
@@ -103,37 +103,37 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-near-window-indoor-light-portrait-2025.webp',
                 alt: 'Natural light portrait',
-                title: 'Natural Light Portrait',
+                title: "isn't it cinematic",
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-group-selfie-smiling-2025.webp',
                 alt: 'Group selfie with friends',
-                title: 'Friends Forever',
+                title: 'trio',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-aroice-with-yash-iit-patna-2025.webp',
                 alt: 'With friend at IIT Patna',
-                title: 'Campus Friendship',
+                title: 'Always with you',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-friends-campus-iit.webp',
                 alt: 'Campus friends',
-                title: 'Squad Goals',
+                title: 'the trio',
                 year: '2024'
             },
             {
                 src: './album/aryan-techie-speaking-on-stage-2025.webp',
                 alt: 'Speaking on stage',
-                title: 'Speaking Engagement',
-                year: '2025'
+                title: 'On Stage',
+                year: '2024'
             },
             {
                 src: './album/aryan-techie-whiteboard-presentation-snap.webp',
-                alt: 'Teaching moment',
-                title: 'Teaching Session',
+                alt: 'stage moment',
+                title: 'me on stage',
                 year: '2024'
             },
             {
@@ -150,20 +150,20 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-winter-cap-campus-portrait-iit-patna-2025.webp',
-                alt: 'Winter campus portrait',
-                title: 'Winter Campus',
+                alt: 'Winter gateway portrait',
+                title: 'Gateway',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-with-book-stack-headphones-2025.webp',
-                alt: 'Study session with books',
-                title: 'Study Mode',
+                alt: 'books in my hand',
+                title: 'Just Books',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-airplane-sitting-wide-2025.webp',
-                alt: 'Airplane travel',
-                title: 'Flight Journey',
+                alt: 'broski for real',
+                title: 'Broski',
                 year: '2025'
             },
             {
@@ -175,19 +175,19 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-blindfold-risk-poster-style-2025.webp',
                 alt: 'Artistic poster style',
-                title: 'Poster Style',
+                title: 'Expectations',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-books-closeup-intense-read-2025.webp',
                 alt: 'Intense reading moment',
-                title: 'Deep Focus',
+                title: 'Staring at books',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-campus-corridor-side-glance-gym-gymkhana-iit.webp',
-                alt: 'Campus corridor portrait',
-                title: 'Campus Corridor',
+                alt: 'gymkhana corridor portrait',
+                title: 'Corridor',
                 year: '2024'
             },
             {
@@ -200,30 +200,30 @@ class PhotoCollage {
                 src: './album/aryan-techie-closeup-watch-side-glance-aeroplane.webp',
                 alt: 'Travel watch closeup',
                 title: 'Time to Fly',
-                year: '2024'
+                year: '2025'
             },
             {
                 src: './album/aryan-techie-crowd-selfie-hyperreal-2025.webp',
-                alt: 'Crowd selfie moment',
-                title: 'Crowd Moment',
+                alt: 'Caffeinated Moment at IIT',
+                title: 'Caffeinated Moment',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-duo-plane-travel-look.webp',
                 alt: 'Travel duo shot',
                 title: 'Travel Duo',
-                year: '2024'
+                year: '2025'
             },
             {
                 src: './album/aryan-techie-eyestore-shot.webp',
                 alt: 'Eyewear store visit',
-                title: 'Eyewear Shopping',
+                title: 'Reflected Me',
                 year: '2024'
             },
             {
                 src: './album/aryan-techie-face-close-hand-cover-style.webp',
                 alt: 'Artistic hand cover pose',
-                title: 'Artistic Portrait',
+                title: 'Why not Sweat?',
                 year: '2024'
             },
             {
@@ -234,9 +234,9 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-friends-iit-runway.webp',
-                alt: 'Runway with friends',
-                title: 'Runway Squad',
-                year: '2024'
+                alt: 'At IIT with My Bro',
+                title: 'Double Vision',
+                year: '2025'
             },
             {
                 src: './album/aryan-techie-mirror-photo-eyewear-store.webp',
@@ -247,13 +247,13 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-seated-iit-campus-2025.webp',
                 alt: 'Seated campus portrait',
-                title: 'Campus Relaxed',
+                title: 'At Campus',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-shirt-mirror-hallway-2025.webp',
-                alt: 'Hallway mirror shot',
-                title: 'Hallway Mirror',
+                alt: 'the mirror shot',
+                title: 'Captured in Reflection',
                 year: '2025'
             },
             {
@@ -271,25 +271,25 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-sitting-chilled-indoor-shot.webp',
                 alt: 'Relaxed indoor moment',
-                title: 'Chill Vibes',
+                title: 'IEM',
                 year: '2024'
             },
             {
                 src: './album/aryan-techie-sitting-yellow-barrier-iit-campus-2025.webp',
-                alt: 'Campus barrier portrait',
-                title: 'Campus Barriers',
+                alt: 'My Portrait at IITP Campus',
+                title: 'Path Ahead',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-smiling-airforce.webp',
                 alt: 'Smiling airforce portrait',
-                title: 'Airforce Smile',
-                year: '2024'
+                title: 'A Selfie',
+                year: '2025'
             },
             {
                 src: './album/aryan-techie-standing-iit-patna-signboard-2025.webp',
                 alt: 'IIT Patna signboard',
-                title: 'IIT Patna Pride',
+                title: 'IIT Patna',
                 year: '2025'
             },
             {
@@ -300,8 +300,8 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-upward-look-palm-tree-vibe-iit.webp',
-                alt: 'Palm tree campus vibe',
-                title: 'Palm Tree Dreams',
+                alt: 'Looking up at the sky',
+                title: 'Looking up',
                 year: '2024'
             },
             {
@@ -318,21 +318,21 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-with-friend-airforce-plane-2025.webp',
-                alt: 'Airforce plane with friend',
-                title: 'Airforce Adventure',
+                alt: 'with my bro',
+                title: 'Broski',
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-with-friend-winter-2024.webp.webp',
-                alt: 'Winter moment with friend',
-                title: 'Winter Friendship',
+                src: './album/aryan-techie-with-friend-winter-2024.jpg.webp',
+                alt: 'with mr ninad',
+                title: 'with Mr. Ninad',
                 year: '2024'
             },
             // New 2025 Photos
             {
                 src: './album/aryan-jangra-aroice-portrait-2025.webp',
                 alt: 'Professional portrait of Aryan Jangra (Aroice)',
-                title: 'Aroice Portrait',
+                title: 'At Cafe',
                 year: '2025'
             },
             {
@@ -344,7 +344,7 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-airport-window-travel-2025.webp',
                 alt: 'Airport window view during travel',
-                title: 'Travel Vibes',
+                title: 'Travel Time',
                 year: '2025'
             },
             {
@@ -355,8 +355,8 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-campus-lawn-portrait-2025.webp',
-                alt: 'Portrait on campus lawn',
-                title: 'Campus Lawn Moment',
+                alt: 'Lost in Thought',
+                title: 'Lost in Thought',
                 year: '2025'
             },
             {
@@ -368,25 +368,25 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-creative-edit-double-exposure-2025.webp',
                 alt: 'Creative double exposure artistic edit',
-                title: 'Double Exposure Art',
+                title: 'Artcover',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-dev-terminal-notes-2025.webp',
-                alt: 'Developer workspace with terminal and notes',
-                title: 'Dev Mode',
+                alt: 'Why not Die - Memento Mori',
+                title: 'Memento Mori',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-developer-gym-mirror-2025.webp',
                 alt: 'Developer lifestyle gym mirror shot',
-                title: 'Gym Grind',
+                title: 'GYM Time',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-developer-vibes-gym-2025.webp',
-                alt: 'Developer vibes at gym',
-                title: 'Developer Fitness',
+                alt: 'at gym',
+                title: 'At GYM',
                 year: '2025'
             },
             {
@@ -402,21 +402,15 @@ class PhotoCollage {
                 year: '2025'
             },
             {
-                src: './album/aryan-techie-face-selfie-2025.webp',
-                alt: 'Close-up face selfie',
-                title: 'Face Focus',
-                year: '2025'
-            },
-            {
                 src: './album/aryan-techie-hand-holding-rose-2025.webp',
                 alt: 'Hand holding a rose',
-                title: 'Rose Moment',
+                title: 'Cinematic Rose',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-headshot-glasses-2025.webp',
                 alt: 'Professional headshot with glasses',
-                title: 'Professional Look',
+                title: 'Weather or me?',
                 year: '2025'
             },
             {
@@ -439,8 +433,8 @@ class PhotoCollage {
             },
             {
                 src: './album/aryan-techie-phone-screenshot-notes-2025.webp',
-                alt: 'Phone screenshot of notes and ideas',
-                title: 'Digital Notes',
+                alt: 'weather in july',
+                title: 'A day in July',
                 year: '2025'
             },
             {
@@ -452,13 +446,13 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-quote-moment-1-2025.webp',
                 alt: 'Inspirational quote moment',
-                title: 'Quote Inspiration',
+                title: 'Really??',
                 year: '2025'
             },
             {
                 src: './album/aryan-techie-shadow-walking-topdown-2025.webp',
                 alt: 'Top-down view of walking shadow',
-                title: 'Shadow Walk',
+                title: 'Shoes & Shadow',
                 year: '2025'
             },
             {
@@ -470,8 +464,8 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-sunset-shadow-art-2025.webp',
                 alt: 'Artistic sunset shadow composition',
-                title: 'Sunset Shadows',
-                year: '2025'
+                title: 'Sunset walk',
+                year: '2024'
             },
             {
                 src: './album/aryan-techie-video-editing-workflow-2025.webp',
@@ -481,8 +475,8 @@ class PhotoCollage {
             },
             {
                 src: './album/memento-mori-aryantechie-cal.webp',
-                alt: 'Memento mori artistic calendar moment',
-                title: 'Memento Mori',
+                alt: 'is this moment even real',
+                title: 'the quote',
                 year: '2025'
             },
             {
@@ -508,7 +502,44 @@ class PhotoCollage {
                 alt: 'Memory in motion series - part 4',
                 title: 'Memory in Motion IV',
                 year: '2025'
-            }
+            },
+
+            {
+                src: './album/me-into-the-book.webp',
+                alt: 'lost into book',
+                title: 'me into the book',
+                year: '2024'
+            },
+
+
+            {
+                src: './album/white-nights.png',
+                alt: 'white nights in flight',
+                title: 'White Nights',
+                year: '2025'
+            },
+
+            {
+                src: './album/high-in-the-sky.png',
+                alt: 'high in the sky',
+                title: 'above the clouds',
+                year: '2025'
+            },
+
+            {
+                src: './album/at-cafe-zero-to-one-tea.jpg',
+                alt: 'at cafe IITP',
+                title: 'Zero To Tea',
+                year: '2025'
+            },
+            
+            {
+                src: './album/pastery-cafe-iit.jpg',
+                alt: 'pastery-at-cafe',
+                title: 'Pastery',
+                year: '2025'
+            },
+
         ];
     }
 
