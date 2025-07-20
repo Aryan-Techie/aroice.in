@@ -74,17 +74,18 @@ body {
     z-index: -1;
 }
 
-/* Header */
+/* Enhanced Header */
 .gallery-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(10, 10, 10, 0.8);
+    background: rgba(10, 10, 10, 0.85);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px 20px;
+    padding: 0;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .gallery-nav {
@@ -93,6 +94,28 @@ body {
     justify-content: space-between;
     max-width: 1400px;
     margin: 0 auto;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.nav-left,
+.nav-center,
+.nav-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    justify-content: flex-start;
+}
+
+.nav-center {
+    justify-content: center;
+}
+
+.nav-right {
+    justify-content: flex-end;
 }
 
 .back-link {
@@ -103,25 +126,111 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 400;
-    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .back-link:hover,
 .back-link:focus {
     color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
     outline: none;
+    transform: translateY(-1px);
 }
 
 .gallery-title {
-    font-size: 18px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.title-main {
+    display: block;
+    font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.title-subtitle {
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.photo-counter {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 6px 12px;
+}
+
+.counter-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.loading-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #60a5fa, #3b82f6);
+    width: 0%;
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
 }
 
 /* Main Container */
 .gallery-container {
-    margin-top: 80px;
+    margin-top: 90px;
     padding: 40px 20px 20px;
     max-width: 1400px;
     margin-left: auto;
@@ -563,7 +672,7 @@ body {
 
 @media (max-width: 900px) {
     .gallery-container {
-        margin-top: 70px;
+        margin-top: 75px;
         padding: 25px 15px;
     }
     
@@ -580,11 +689,41 @@ body {
     .gallery-intro {
         margin-bottom: 50px;
     }
+    
+    .gallery-nav {
+        padding: 12px 15px;
+    }
+    
+    .title-main {
+        font-size: 18px;
+    }
+    
+    .title-subtitle {
+        font-size: 11px;
+    }
+    
+    .header-controls {
+        gap: 8px;
+    }
+    
+    .control-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
+    }
+    
+    .photo-counter {
+        padding: 4px 8px;
+    }
+    
+    .counter-text {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 768px) {
     .gallery-container {
-        margin-top: 65px;
+        margin-top: 70px;
         padding: 20px 12px;
     }
     
@@ -605,15 +744,38 @@ body {
     }
     
     .gallery-nav {
-        padding: 0 12px;
+        padding: 10px 12px;
     }
     
-    .gallery-title {
+    .title-main {
         font-size: 16px;
+    }
+    
+    .title-subtitle {
+        font-size: 10px;
     }
     
     .back-link {
         font-size: 13px;
+        padding: 6px 10px;
+    }
+    
+    .header-controls {
+        gap: 6px;
+    }
+    
+    .control-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+    }
+    
+    .photo-counter {
+        padding: 3px 6px;
+    }
+    
+    .counter-text {
+        font-size: 10px;
     }
     
     .gallery-intro {
@@ -695,7 +857,7 @@ body {
 @media (max-width: 480px) {
     .gallery-container {
         padding: 15px 8px;
-        margin-top: 60px;
+        margin-top: 65px;
     }
     
     .photo-collage {
@@ -709,20 +871,65 @@ body {
     }
     
     .gallery-header {
-        padding: 12px 15px;
+        padding: 0;
     }
     
     .gallery-nav {
-        padding: 0 8px;
+        padding: 8px 8px;
+        flex-direction: column;
+        gap: 8px;
     }
     
-    .gallery-title {
-        font-size: 15px;
+    .nav-left,
+    .nav-center,
+    .nav-right {
+        flex: none;
+        width: 100%;
+    }
+    
+    .nav-center {
+        order: -1;
+    }
+    
+    .nav-left {
+        justify-content: center;
+    }
+    
+    .nav-right {
+        justify-content: center;
+    }
+    
+    .title-main {
+        font-size: 14px;
+    }
+    
+    .title-subtitle {
+        font-size: 9px;
     }
     
     .back-link {
         font-size: 12px;
         gap: 6px;
+        padding: 4px 8px;
+    }
+    
+    .header-controls {
+        gap: 4px;
+        justify-content: center;
+    }
+    
+    .control-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 10px;
+    }
+    
+    .photo-counter {
+        padding: 2px 4px;
+    }
+    
+    .counter-text {
+        font-size: 9px;
     }
     
     .gallery-heading {

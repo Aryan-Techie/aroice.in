@@ -21,6 +21,8 @@ class PhotoCollage {
         this.setupEventListeners();
         this.setupInfiniteScroll();
         this.disableRightClick();
+        this.initializeHeaderControls();
+        this.updatePhotoCounter();
     }
 
     initializePhotos() {
@@ -378,6 +380,10 @@ class PhotoCollage {
             this.loadedPhotos = endIndex;
             this.isLoading = false;
             this.hideLoadingIndicator();
+            
+            // Update header controls
+            this.updatePhotoCounter();
+            this.updateProgressBar();
 
             // Setup lazy loading for new images
             this.setupLazyLoading();
@@ -811,6 +817,90 @@ class PhotoCollage {
                 img.setAttribute('data-observed', 'true');
                 imageObserver.observe(img);
             });
+        }
+    }
+
+    initializeHeaderControls() {
+        // Shuffle button functionality
+        const shuffleBtn = document.querySelector('.shuffle-btn');
+        if (shuffleBtn) {
+            shuffleBtn.addEventListener('click', () => {
+                this.shuffleGallery();
+            });
+        }
+
+        // Fullscreen button functionality
+        const fullscreenBtn = document.querySelector('.fullscreen-btn');
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', () => {
+                this.toggleFullscreen();
+            });
+        }
+
+        // Listen for fullscreen changes to update button icon
+        document.addEventListener('fullscreenchange', () => {
+            this.updateFullscreenButton();
+        });
+    }
+
+    shuffleGallery() {
+        // Add loading effect
+        this.showLoadingIndicator();
+        
+        // Animate out current photos
+        const currentPhotos = this.photoContainer.querySelectorAll('.photo-item');
+        currentPhotos.forEach((photo, index) => {
+            setTimeout(() => {
+                photo.style.opacity = '0';
+                photo.style.transform = 'translateY(20px) scale(0.95)';
+            }, index * 30);
+        });
+
+        // After animation, recreate gallery
+        setTimeout(() => {
+            this.createCollage();
+            this.hideLoadingIndicator();
+        }, currentPhotos.length * 30 + 300);
+    }
+
+    toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable fullscreen: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    }
+
+    updateFullscreenButton() {
+        const fullscreenBtn = document.querySelector('.fullscreen-btn i');
+        if (fullscreenBtn) {
+            if (document.fullscreenElement) {
+                fullscreenBtn.className = 'fas fa-compress';
+                fullscreenBtn.parentElement.title = 'Exit Fullscreen';
+            } else {
+                fullscreenBtn.className = 'fas fa-expand';
+                fullscreenBtn.parentElement.title = 'Toggle Fullscreen';
+            }
+        }
+    }
+
+    updatePhotoCounter() {
+        const loadedElement = document.getElementById('photos-loaded');
+        const totalElement = document.getElementById('total-photos');
+        
+        if (loadedElement && totalElement) {
+            loadedElement.textContent = this.loadedPhotos;
+            totalElement.textContent = this.photos.length;
+        }
+    }
+
+    updateProgressBar() {
+        const progressBar = document.getElementById('progress-bar');
+        if (progressBar) {
+            const progress = (this.loadedPhotos / this.photos.length) * 100;
+            progressBar.style.width = `${progress}%`;
         }
     }
 }

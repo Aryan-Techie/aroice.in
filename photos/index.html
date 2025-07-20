@@ -121,12 +121,41 @@
     <!-- Header -->
     <header class="gallery-header" role="banner">
         <nav class="gallery-nav" role="navigation" aria-label="Main navigation">
-            <a href="../" class="back-link" aria-label="Back to Aroice main site">
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                <span>Back to Aroice</span>
-            </a>
-            <h1 class="gallery-title">Photo Gallery</h1>
+            <div class="nav-left">
+                <a href="../" class="back-link" aria-label="Back to Aroice main site">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    <span>Back to Aroice</span>
+                </a>
+            </div>
+            
+            <div class="nav-center">
+                <h1 class="gallery-title">
+                    <span class="title-main">Photo Gallery</span>
+                    <span class="title-subtitle">Captured Moments</span>
+                </h1>
+            </div>
+            
+            <div class="nav-right">
+                <div class="header-controls">
+                    <button class="control-btn shuffle-btn" title="Shuffle Gallery" aria-label="Shuffle photo order">
+                        <i class="fas fa-random" aria-hidden="true"></i>
+                    </button>
+                    <button class="control-btn fullscreen-btn" title="Toggle Fullscreen" aria-label="Toggle fullscreen mode">
+                        <i class="fas fa-expand" aria-hidden="true"></i>
+                    </button>
+                    <div class="photo-counter">
+                        <span class="counter-text">
+                            <span id="photos-loaded">0</span> / <span id="total-photos">0</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
         </nav>
+        
+        <!-- Progress bar for loading -->
+        <div class="loading-progress">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
     </header>
 
     <!-- Main Content -->
