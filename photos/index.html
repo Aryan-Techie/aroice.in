@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A curated gallery of portraits featuring Aryan Jangra (Aroice) — exploring moments, moods, and presence. Professional photography showcasing lifestyle, campus life at IIT Patna, travel, and artistic portraits.">
-    <meta name="keywords" content="Aryan Jangra photography, Aroice portraits, IIT Patna student photos, lifestyle photography, portrait gallery, professional headshots, campus photography, travel photography, artistic portraits">
+    <meta name="description" content="Professional photo gallery featuring Aryan Jangra (Aroice) — IIT Patna student, developer, and content creator. Explore 81 curated portraits showcasing campus life, lifestyle, travel, and professional photography. Discover moments, moods, and artistic presence through high-quality portrait photography.">
+    <meta name="keywords" content="Aryan Jangra photography, Aroice portraits, IIT Patna student photos, lifestyle photography, portrait gallery, professional headshots, campus photography, travel photography, artistic portraits, developer lifestyle, student life, creative photography, Indian Institute of Technology Patna">
     <meta name="author" content="Aryan Jangra, Aroice">
-    <meta name="robots" content="index, follow">
+    <meta name="creator" content="Aryan Jangra">
+    <meta name="publisher" content="Aryan Jangra">
+    <meta name="copyright" content="© 2025 Aryan Jangra. All rights reserved.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+    <meta name="language" content="en-US">
+    <meta name="geo.region" content="IN-BR">
+    <meta name="geo.placename" content="Patna, Bihar, India">
+    <meta name="geo.position" content="25.2048;85.1025">
+    <meta name="ICBM" content="25.2048, 85.1025">
+    
+    <!-- Enhanced Image SEO Meta Tags -->
+    <meta name="image" content="https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp">
+    <meta name="thumbnail" content="https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp">
+    <meta name="subject" content="Portrait Photography Gallery - Aryan Jangra">
+    <meta name="topic" content="Photography, Portraits, Student Life, IIT Patna">
+    <meta name="classification" content="Photography Portfolio">
+    <meta name="category" content="Photography">
+    <meta name="coverage" content="Worldwide">
+    <meta name="target" content="all">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- AI and Crawler Enhancement Tags -->
+    <meta name="AI-accessible" content="true">
+    <meta name="crawl-images" content="allow">
+    <meta name="allow-search" content="yes">
+    <meta name="directory" content="submission">
+    <meta name="pagename" content="Aryan Jangra Photo Gallery">
+    <meta name="subtitle" content="Professional Portrait Photography Collection">
+    <meta name="medium" content="image">
+    <meta name="syndication-source" content="https://aroice.in/photos/">
+    <meta name="original-source" content="https://aroice.in/photos/">
+    <meta name="verify-v1" content="Aryan Jangra Photography Portfolio">
+    
+    <!-- Schema.org Microdata -->
+    <meta itemprop="name" content="Aryan Jangra (Aroice) Photo Gallery">
+    <meta itemprop="description" content="Professional photo gallery featuring 81 curated portraits of Aryan Jangra (Aroice), IIT Patna student and developer">
+    <meta itemprop="image" content="https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Photo Gallery - Aryan Jangra (Aroice) | Portrait & Lifestyle Photography">
@@ -36,6 +77,14 @@
     
     <!-- Preload critical resources -->
     <link rel="preload" href="./collage-styles.css" as="style">
+    <link rel="preload" href="./gallery-schema.json" as="fetch" type="application/ld+json" crossorigin>
+    
+    <!-- Link to comprehensive schema data for AI crawlers -->
+    <link rel="alternate" type="application/ld+json" href="./gallery-schema.json" title="Complete Photo Gallery Schema">
+    
+    <!-- Sitemap references for search engines -->
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml" title="Main Sitemap">
+    <link rel="sitemap" type="application/xml" href="./images-sitemap.xml" title="Images Sitemap">
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="./collage-styles.css">
@@ -74,10 +123,25 @@
         },
         "primaryImageOfPage": {
             "@type": "ImageObject",
-            "url": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.jpg",
+            "url": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
             "width": "800",
-            "height": "1000"
+            "height": "1000",
+            "caption": "Professional portrait of Aryan Jangra (Aroice) - Formal mirror portrait 2025",
+            "description": "Professional headshot of Aryan Jangra, IIT Patna student and content creator, captured in formal attire",
+            "creator": {
+                "@type": "Person",
+                "name": "Aryan Jangra"
+            },
+            "copyrightHolder": {
+                "@type": "Person",
+                "name": "Aryan Jangra"
+            },
+            "license": "https://aroice.in/photos/",
+            "acquireLicensePage": "https://aroice.in/photos/"
         },
+        "numberOfItems": 81,
+        "genre": ["Portrait Photography", "Lifestyle Photography", "Campus Photography", "Travel Photography"],
+        "keywords": "Aryan Jangra, Aroice, IIT Patna, portrait photography, student life, campus photography, lifestyle photos",
         "datePublished": "2025-01-01",
         "dateModified": "2025-07-20",
         "publisher": {
@@ -85,7 +149,57 @@
             "name": "Aryan Jangra",
             "url": "https://aroice.in"
         },
-        "mainEntityOfPage": "https://aroice.in/photos/"
+        "mainEntityOfPage": "https://aroice.in/photos/",
+        "inLanguage": "en-US",
+        "copyrightYear": 2025,
+        "copyrightHolder": {
+            "@type": "Person",
+            "name": "Aryan Jangra"
+        }
+    }
+    </script>
+
+    <!-- Individual Image Collection Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Aryan Jangra Photo Collection",
+        "description": "Complete collection of professional portraits and lifestyle photography featuring Aryan Jangra (Aroice)",
+        "numberOfItems": 81,
+        "itemListOrder": "https://schema.org/ItemListOrderAscending",
+        "itemListElement": [
+            {
+                "@type": "ImageObject",
+                "position": 1,
+                "url": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+                "name": "Professional Mirror Portrait",
+                "description": "Formal portrait of Aryan Jangra in professional attire, captured in mirror reflection",
+                "contentUrl": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+                "thumbnailUrl": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+                "creator": "Aryan Jangra",
+                "copyrightHolder": "Aryan Jangra",
+                "width": 800,
+                "height": 1000,
+                "encodingFormat": "image/webp",
+                "datePublished": "2025-01-01"
+            },
+            {
+                "@type": "ImageObject", 
+                "position": 2,
+                "url": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+                "name": "IIT Patna Campus Portrait",
+                "description": "Aryan Jangra standing at IIT Patna campus in 2025",
+                "contentUrl": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+                "thumbnailUrl": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+                "creator": "Aryan Jangra",
+                "copyrightHolder": "Aryan Jangra",
+                "width": 800,
+                "height": 1000,
+                "encodingFormat": "image/webp",
+                "datePublished": "2025-01-01"
+            }
+        ]
     }
     </script>
     
@@ -179,5 +293,21 @@
 
     <!-- JavaScript -->
     <script src="./collage-script.js" defer></script>
+    <script src="./seo-enhancer.js" defer></script>
+    
+    <!-- SEO Performance Monitor -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Photo Gallery SEO Implementation",
+        "description": "Advanced SEO implementation for image gallery with comprehensive structured data",
+        "datePublished": "2025-07-20",
+        "author": {
+            "@type": "Person",
+            "name": "Aryan Jangra"
+        }
+    }
+    </script>
 </body>
 </html>

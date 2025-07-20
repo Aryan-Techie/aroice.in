@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Main Photo Gallery Page -->
+    <url>
+        <loc>https://aroice.in/photos/</loc>
+        <lastmod>2025-07-20</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+        
+        <!-- Featured Images -->
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp</image:loc>
+            <image:caption>Professional mirror portrait of Aryan Jangra (Aroice) in formal attire - 2025</image:caption>
+            <image:title>Aryan Jangra Professional Portrait</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp</image:loc>
+            <image:caption>Aryan Jangra standing at IIT Patna campus - Student life portrait 2025</image:caption>
+            <image:title>IIT Patna Campus Portrait - Aryan Jangra</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-reading-in-library-2025.webp</image:loc>
+            <image:caption>Aryan Jangra studying in library - Academic lifestyle photography 2025</image:caption>
+            <image:title>Library Study Session - Aryan Jangra</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-laptop-setup-grind-late-night-2025.webp</image:loc>
+            <image:caption>Late night coding session - Aryan Jangra developer lifestyle 2025</image:caption>
+            <image:title>Developer Grind - Late Night Coding</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-airforce-plane-background-sitting-2025.webp</image:loc>
+            <image:caption>Aryan Jangra with air force plane background - Travel and aviation themed portrait 2025</image:caption>
+            <image:title>Aviation Portrait - Air Force Background</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-airport-working-nomad-style-2025.webp</image:loc>
+            <image:caption>Digital nomad lifestyle - Aryan Jangra working at airport 2025</image:caption>
+            <image:title>Digital Nomad Airport Workspace</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-dual-color-portrait-editorial-2025.webp</image:loc>
+            <image:caption>Editorial style dual color portrait of Aryan Jangra - Creative photography 2025</image:caption>
+            <image:title>Editorial Dual Color Portrait</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-aroice-with-yash-iit-patna-2025.webp</image:loc>
+            <image:caption>Aryan Jangra (Aroice) with friend Yash at IIT Patna - Campus friendship 2025</image:caption>
+            <image:title>Campus Friends - Aroice and Yash at IIT Patna</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-speaking-on-stage-2025.webp</image:loc>
+            <image:caption>Aryan Jangra speaking on stage - Public speaking and presentation 2025</image:caption>
+            <image:title>Stage Presentation - Public Speaking</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-dev-terminal-notes-2025.webp</image:loc>
+            <image:caption>Developer workflow - Terminal and coding notes setup 2025</image:caption>
+            <image:title>Developer Terminal Workspace</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-developer-gym-mirror-2025.webp</image:loc>
+            <image:caption>Fitness and tech balance - Developer gym mirror selfie 2025</image:caption>
+            <image:title>Developer Fitness Balance</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-campus-lawn-portrait-2025.webp</image:loc>
+            <image:caption>Outdoor campus portrait - Aryan Jangra on college lawn 2025</image:caption>
+            <image:title>Campus Lawn Portrait</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-creative-edit-double-exposure-2025.webp</image:loc>
+            <image:caption>Creative double exposure portrait - Artistic photography of Aryan Jangra 2025</image:caption>
+            <image:title>Creative Double Exposure Art</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-bonfire-warm-tones-2025.webp</image:loc>
+            <image:caption>Bonfire portrait with warm tones - Evening outdoor photography 2025</image:caption>
+            <image:title>Bonfire Evening Portrait</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-evening-light-2025.webp</image:loc>
+            <image:caption>Golden hour portrait - Beautiful evening light photography 2025</image:caption>
+            <image:title>Golden Hour Evening Light</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-headshot-glasses-2025.webp</image:loc>
+            <image:caption>Professional headshot with glasses - Clean portrait photography 2025</image:caption>
+            <image:title>Professional Headshot with Glasses</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-monochrome-portrait-art-2025.webp</image:loc>
+            <image:caption>Monochrome artistic portrait - Black and white photography 2025</image:caption>
+            <image:title>Monochrome Portrait Art</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-plane-wing-flight-above-clouds-2025.webp</image:loc>
+            <image:caption>Flight photography - Plane wing view above clouds during travel 2025</image:caption>
+            <image:title>Flight Above Clouds - Plane Wing View</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-silhouette-campus-2025.webp</image:loc>
+            <image:caption>Campus silhouette photography - Artistic shadow portrait 2025</image:caption>
+            <image:title>Campus Silhouette Art</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/aryan-techie-video-editing-workflow-2025.webp</image:loc>
+            <image:caption>Content creator workflow - Video editing setup and process 2025</image:caption>
+            <image:title>Video Editing Workflow</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/memory-in-motion-1-2025.webp</image:loc>
+            <image:caption>Memory in motion series 1 - Artistic lifestyle photography 2025</image:caption>
+            <image:title>Memory in Motion - Part 1</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/memory-in-motion-2-2025.webp</image:loc>
+            <image:caption>Memory in motion series 2 - Artistic lifestyle photography 2025</image:caption>
+            <image:title>Memory in Motion - Part 2</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/memory-in-motion-3-2025.webp</image:loc>
+            <image:caption>Memory in motion series 3 - Artistic lifestyle photography 2025</image:caption>
+            <image:title>Memory in Motion - Part 3</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+        <image:image>
+            <image:loc>https://aroice.in/photos/album/memory-in-motion-4-2025.webp</image:loc>
+            <image:caption>Memory in motion series 4 - Artistic lifestyle photography 2025</image:caption>
+            <image:title>Memory in Motion - Part 4</image:title>
+            <image:license>https://aroice.in/photos/</image:license>
+        </image:image>
+        
+    </url>
+</urlset>

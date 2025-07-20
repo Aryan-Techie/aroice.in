@@ -4,9 +4,11 @@ Allow: /
 # Allow indexing of photos
 Allow: /photos/
 Allow: /photos/album/
+Allow: /photos/images-sitemap.xml
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://aroice.in/sitemap.xml
+Sitemap: https://aroice.in/photos/images-sitemap.xml
 
 # Crawl-delay for being respectful
 Crawl-delay: 1

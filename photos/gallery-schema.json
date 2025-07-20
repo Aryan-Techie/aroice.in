@@ -1,0 +1,197 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Aryan Jangra (Aroice) Photo Gallery - Complete Collection",
+  "description": "Complete professional photography collection featuring Aryan Jangra (Aroice) - IIT Patna student, developer, and content creator. Includes portrait photography, campus life, travel, lifestyle, and professional headshots.",
+  "url": "https://aroice.in/photos/",
+  "mainEntity": {
+    "@type": "ImageGallery",
+    "name": "Aroice Photo Portfolio",
+    "numberOfItems": 81,
+    "creator": {
+      "@type": "Person",
+      "@id": "https://aroice.in/#person",
+      "name": "Aryan Jangra",
+      "alternateName": "Aroice",
+      "url": "https://aroice.in",
+      "image": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+      "sameAs": [
+        "https://www.instagram.com/aryantechie",
+        "https://www.linkedin.com/in/aryantechie",
+        "https://github.com/aryan-techie"
+      ],
+      "jobTitle": "Computer Science Student & Content Creator",
+      "worksFor": {
+        "@type": "EducationalOrganization",
+        "name": "Indian Institute of Technology Patna",
+        "address": "Bihta, Patna, India"
+      }
+    },
+    "mainEntity": [
+      {
+        "@type": "ImageObject",
+        "@id": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+        "url": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+        "contentUrl": "https://aroice.in/photos/album/aryan-techie-formal-fit-mirror-portrait-2025.webp",
+        "name": "Professional Mirror Portrait - Aryan Jangra 2025",
+        "description": "Professional portrait of Aryan Jangra in formal attire, captured in mirror reflection. IIT Patna student and developer portfolio photography.",
+        "caption": "Formal mirror portrait showcasing professional photography style",
+        "creator": "Aryan Jangra",
+        "copyrightHolder": "Aryan Jangra",
+        "license": "https://aroice.in/photos/",
+        "acquireLicensePage": "https://aroice.in/photos/",
+        "creditText": "Aryan Jangra (Aroice)",
+        "datePublished": "2025-01-01",
+        "dateCreated": "2025-01-01",
+        "uploadDate": "2025-01-01",
+        "encodingFormat": "image/webp",
+        "width": 800,
+        "height": 1000,
+        "keywords": ["Aryan Jangra", "Aroice", "portrait photography", "professional headshot", "IIT Patna", "formal attire", "mirror portrait", "student photography", "developer portfolio"],
+        "about": {
+          "@type": "Person",
+          "name": "Aryan Jangra",
+          "alternateName": "Aroice"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Indoor Studio"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+        "url": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+        "contentUrl": "https://aroice.in/photos/album/aryan-techie-iit-patna-campus-standing-2025.webp",
+        "name": "IIT Patna Campus Portrait - Aryan Jangra 2025",
+        "description": "Aryan Jangra standing at IIT Patna campus in 2025. Campus life photography showcasing student life at Indian Institute of Technology Patna.",
+        "caption": "Campus portrait at IIT Patna showcasing student life and academic environment",
+        "creator": "Aryan Jangra",
+        "copyrightHolder": "Aryan Jangra",
+        "license": "https://aroice.in/photos/",
+        "acquireLicensePage": "https://aroice.in/photos/",
+        "creditText": "Aryan Jangra (Aroice)",
+        "datePublished": "2025-01-01",
+        "dateCreated": "2025-01-01",
+        "uploadDate": "2025-01-01",
+        "encodingFormat": "image/webp",
+        "width": 800,
+        "height": 1000,
+        "keywords": ["IIT Patna", "campus photography", "student life", "Aryan Jangra", "Aroice", "college portrait", "academic photography", "university life", "Indian Institute of Technology"],
+        "about": {
+          "@type": "Person",
+          "name": "Aryan Jangra",
+          "alternateName": "Aroice"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "IIT Patna Campus",
+          "address": "India"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://aroice.in/photos/album/aryan-techie-dev-terminal-notes-2025.webp",
+        "url": "https://aroice.in/photos/album/aryan-techie-dev-terminal-notes-2025.webp",
+        "contentUrl": "https://aroice.in/photos/album/aryan-techie-dev-terminal-notes-2025.webp",
+        "name": "Developer Terminal Workspace - Aryan Jangra 2025",
+        "description": "Developer workflow photography showing terminal and coding notes setup. Aryan Jangra's programming workspace and development environment.",
+        "caption": "Programming workflow and developer setup featuring terminal and coding notes",
+        "creator": "Aryan Jangra",
+        "copyrightHolder": "Aryan Jangra",
+        "license": "https://aroice.in/photos/",
+        "acquireLicensePage": "https://aroice.in/photos/",
+        "creditText": "Aryan Jangra (Aroice)",
+        "datePublished": "2025-01-01",
+        "dateCreated": "2025-01-01",
+        "uploadDate": "2025-01-01",
+        "encodingFormat": "image/webp",
+        "width": 800,
+        "height": 1000,
+        "keywords": ["developer workspace", "programming", "coding", "terminal", "software development", "Aryan Jangra", "Aroice", "tech lifestyle", "computer science", "developer tools"],
+        "about": {
+          "@type": "Person",
+          "name": "Aryan Jangra",
+          "alternateName": "Aroice"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Developer Workspace"
+        }
+      },
+      {
+        "@type": "ImageObject",
+        "@id": "https://aroice.in/photos/album/aryan-techie-creative-edit-double-exposure-2025.webp",
+        "url": "https://aroice.in/photos/album/aryan-techie-creative-edit-double-exposure-2025.webp",
+        "contentUrl": "https://aroice.in/photos/album/aryan-techie-creative-edit-double-exposure-2025.webp",
+        "name": "Creative Double Exposure Art - Aryan Jangra 2025",
+        "description": "Creative double exposure portrait showcasing artistic photography techniques. Experimental and artistic portrait of Aryan Jangra with advanced editing.",
+        "caption": "Artistic double exposure portrait demonstrating creative photography and editing skills",
+        "creator": "Aryan Jangra",
+        "copyrightHolder": "Aryan Jangra",
+        "license": "https://aroice.in/photos/",
+        "acquireLicensePage": "https://aroice.in/photos/",
+        "creditText": "Aryan Jangra (Aroice)",
+        "datePublished": "2025-01-01",
+        "dateCreated": "2025-01-01",
+        "uploadDate": "2025-01-01",
+        "encodingFormat": "image/webp",
+        "width": 800,
+        "height": 1000,
+        "keywords": ["double exposure", "creative photography", "artistic portrait", "photo editing", "experimental photography", "Aryan Jangra", "Aroice", "digital art", "creative editing", "artistic expression"],
+        "about": {
+          "@type": "Person",
+          "name": "Aryan Jangra",
+          "alternateName": "Aroice"
+        },
+        "contentLocation": {
+          "@type": "Place",
+          "name": "Creative Studio"
+        }
+      }
+    ]
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://aroice.in"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Photo Gallery",
+        "item": "https://aroice.in/photos/"
+      }
+    ]
+  },
+  "author": {
+    "@type": "Person",
+    "@id": "https://aroice.in/#person",
+    "name": "Aryan Jangra",
+    "alternateName": "Aroice"
+  },
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://aroice.in/#person",
+    "name": "Aryan Jangra"
+  },
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://aroice.in/#person",
+    "name": "Aryan Jangra"
+  },
+  "copyrightYear": 2025,
+  "datePublished": "2025-01-01",
+  "dateModified": "2025-07-20",
+  "inLanguage": "en-US",
+  "genre": ["Portrait Photography", "Lifestyle Photography", "Campus Photography", "Travel Photography", "Professional Photography"],
+  "keywords": "Aryan Jangra, Aroice, IIT Patna, portrait photography, student life, campus photography, lifestyle photos, professional headshots, developer lifestyle, travel photography, creative photography, artistic portraits",
+  "audience": {
+    "@type": "Audience",
+    "audienceType": "Photography enthusiasts, Students, Professionals, Recruiters"
+  }
+}

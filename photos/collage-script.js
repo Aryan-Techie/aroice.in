@@ -698,7 +698,7 @@ class PhotoCollage {
         photoItem.setAttribute('role', 'button');
         photoItem.setAttribute('aria-label', `View photo: ${photo.alt}`);
         
-        // SEO: Add structured data for images
+        // Enhanced SEO: Add comprehensive structured data for images
         photoItem.setAttribute('itemscope', '');
         photoItem.setAttribute('itemtype', 'https://schema.org/ImageObject');
         
@@ -712,26 +712,65 @@ class PhotoCollage {
         img.alt = photo.alt;
         img.loading = 'lazy';
         
-        // SEO: Enhanced meta attributes for search engines
+        // Enhanced SEO: Comprehensive meta attributes for search engines and AI crawlers
         img.setAttribute('itemprop', 'contentUrl');
         img.setAttribute('data-title', photo.title);
         img.setAttribute('data-year', photo.year);
         
-        // Store photo data for modal and SEO
+        // Additional SEO attributes for better discovery
+        img.setAttribute('data-photographer', 'Aryan Jangra');
+        img.setAttribute('data-subject', 'Aryan Jangra Aroice');
+        img.setAttribute('data-category', 'Portrait Photography');
+        img.setAttribute('data-location', photo.title.includes('IIT') ? 'IIT Patna' : 'Various');
+        img.setAttribute('data-keywords', `Aryan Jangra, Aroice, ${photo.title}, ${photo.year}, portrait, photography`);
+        
+        // Store comprehensive photo data for modal and SEO
         photoItem.dataset.title = photo.title;
         photoItem.dataset.year = photo.year;
         photoItem.dataset.src = photo.src;
+        photoItem.dataset.photographer = 'Aryan Jangra';
+        photoItem.dataset.subject = 'Aryan Jangra (Aroice)';
         
-        // Add hidden structured data for SEO
-        const metaData = document.createElement('meta');
-        metaData.setAttribute('itemprop', 'name');
-        metaData.setAttribute('content', `${photo.title} - ${photo.year}`);
-        photoItem.appendChild(metaData);
+        // Enhanced structured data meta tags for better AI crawling
+        const metaName = document.createElement('meta');
+        metaName.setAttribute('itemprop', 'name');
+        metaName.setAttribute('content', `${photo.title} - Aryan Jangra (Aroice) ${photo.year}`);
+        photoItem.appendChild(metaName);
         
         const metaDescription = document.createElement('meta');
         metaDescription.setAttribute('itemprop', 'description');
-        metaDescription.setAttribute('content', photo.alt);
+        metaDescription.setAttribute('content', `${photo.alt} - Professional photography by Aryan Jangra featuring ${photo.title} captured in ${photo.year}`);
         photoItem.appendChild(metaDescription);
+        
+        const metaAuthor = document.createElement('meta');
+        metaAuthor.setAttribute('itemprop', 'author');
+        metaAuthor.setAttribute('content', 'Aryan Jangra');
+        photoItem.appendChild(metaAuthor);
+        
+        const metaCopyright = document.createElement('meta');
+        metaCopyright.setAttribute('itemprop', 'copyrightHolder');
+        metaCopyright.setAttribute('content', 'Aryan Jangra');
+        photoItem.appendChild(metaCopyright);
+        
+        const metaCreator = document.createElement('meta');
+        metaCreator.setAttribute('itemprop', 'creator');
+        metaCreator.setAttribute('content', 'Aryan Jangra');
+        photoItem.appendChild(metaCreator);
+        
+        const metaDatePublished = document.createElement('meta');
+        metaDatePublished.setAttribute('itemprop', 'datePublished');
+        metaDatePublished.setAttribute('content', `${photo.year}-01-01`);
+        photoItem.appendChild(metaDatePublished);
+        
+        const metaEncodingFormat = document.createElement('meta');
+        metaEncodingFormat.setAttribute('itemprop', 'encodingFormat');
+        metaEncodingFormat.setAttribute('content', 'image/webp');
+        photoItem.appendChild(metaEncodingFormat);
+        
+        const metaKeywords = document.createElement('meta');
+        metaKeywords.setAttribute('itemprop', 'keywords');
+        metaKeywords.setAttribute('content', `Aryan Jangra, Aroice, IIT Patna, ${photo.title}, ${photo.year}, portrait photography, student life, lifestyle photography`);
+        photoItem.appendChild(metaKeywords);
         
         img.addEventListener('load', () => {
             photoItem.classList.remove('loading');
