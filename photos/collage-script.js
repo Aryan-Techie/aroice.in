@@ -118,7 +118,7 @@ class PhotoCollage {
                 src: './album/aryan-techie-group-selfie-smiling-2025.webp',
                 alt: 'Group selfie with friends',
                 title: 'trio',
-                year: '2025'
+                year: '2024'
             },
             {
                 src: './album/aryan-techie-aroice-with-yash-iit-patna-2025.webp',
@@ -130,7 +130,7 @@ class PhotoCollage {
                 src: './album/aryan-techie-friends-campus-iit.webp',
                 alt: 'Campus friends',
                 title: 'the trio',
-                year: '2024'
+                year: '2025'
             },
             {
                 src: './album/aryan-techie-speaking-on-stage-2025.webp',
@@ -406,7 +406,7 @@ class PhotoCollage {
             {
                 src: './album/aryan-techie-evening-light-2025.webp',
                 alt: 'Beautiful evening light portrait',
-                title: 'Golden Hour',
+                title: 'The Handshake',
                 year: '2025'
             },
             {
