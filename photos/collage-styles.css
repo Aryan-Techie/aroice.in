@@ -1,0 +1,829 @@
+/* Aroice Photo Collage - Minimal Shuffled Gallery */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #ffffff;
+    overflow-x: hidden;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Skip link for accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #ffffff;
+    color: #000000;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 1000;
+    font-size: 14px;
+    font-weight: 500;
+    transition: top 0.3s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Background */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 70%);
+    z-index: -1;
+}
+
+/* Header */
+.gallery-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+}
+
+.gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.back-link:hover,
+.back-link:focus {
+    color: #ffffff;
+    outline: none;
+}
+
+.gallery-title {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+/* Main Container */
+.gallery-container {
+    margin-top: 80px;
+    padding: 40px 20px 20px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Gallery Introduction - Minimal */
+.gallery-intro {
+    text-align: center;
+    margin-bottom: 80px;
+    padding: 0 20px;
+}
+
+.gallery-heading {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 200;
+    letter-spacing: -3px;
+    color: #ffffff;
+    opacity: 0.95;
+    margin: 0;
+    line-height: 0.85;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+/* Photo Collage Grid - Enhanced */
+.photo-collage {
+    columns: 4;
+    column-gap: 16px;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+}
+
+/* Photo Items - Enhanced */
+.photo-item {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.photo-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.photo-item:nth-child(odd) {
+    animation-delay: 0.1s;
+    transform: translateY(2px);
+}
+
+.photo-item:nth-child(even) {
+    animation-delay: 0.2s;
+    transform: translateY(-1px);
+}
+
+.photo-item:nth-child(3n) {
+    animation-delay: 0.3s;
+    transform: translateY(1px);
+}
+
+/* Touch states for mobile */
+.photo-item:active {
+    transform: translateY(-2px) scale(0.97);
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Photo Images - Enhanced */
+.photo-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.95) contrast(1.05) saturate(1.08);
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    position: relative;
+    z-index: 0;
+}
+
+/* Enhanced Hover Effects */
+.photo-item:hover {
+    transform: translateY(-12px) scale(1.03);
+    z-index: 15;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.photo-item:hover::before {
+    opacity: 1;
+}
+
+.photo-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08) contrast(1.18) saturate(1.25);
+}
+
+/* Enhanced Focus states for accessibility */
+.photo-item:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.9);
+    outline-offset: 4px;
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+.gallery-footer {
+    margin-top: 80px;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    opacity: 0.6;
+}
+
+.footer-content p {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 300;
+    transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    opacity: 1;
+    outline: none;
+}
+
+/* Enhanced Modal for image viewing */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(25px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: modalSlideIn 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-image {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 16px;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9);
+    filter: brightness(1.08) contrast(1.12) saturate(1.05);
+    transition: all 0.3s ease;
+}
+
+.modal-info {
+    margin-top: 24px;
+    text-align: center;
+    max-width: 600px;
+    padding: 20px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+.modal-year {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.modal-close {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 26px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(25px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 200;
+    z-index: 1001;
+    line-height: 1;
+    user-select: none;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.08) rotate(90deg);
+    outline: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes modalSlideIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.85) translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Loading Animation */
+.photo-item.loading {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-item.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(110deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.03) 25%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0.03) 75%, 
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: smoothShimmer 2.5s ease-in-out infinite;
+    transform: skewX(-15deg);
+}
+
+.photo-item.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    animation: breathe 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Smooth shimmer effect */
+@keyframes smoothShimmer {
+    0% {
+        background-position: -200% 0;
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        background-position: 200% 0;
+        opacity: 0.6;
+    }
+}
+
+/* Breathing effect for loading indicator */
+@keyframes breathe {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translate(-50%, -50%) scaleY(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scaleY(1.2);
+    }
+}
+
+/* Image transition on load */
+.photo-item img {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.photo-item:not(.loading) img {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Responsive Design - Enhanced */
+@media (max-width: 1200px) {
+    .photo-collage {
+        columns: 3;
+        column-gap: 12px;
+    }
+    
+    .photo-item {
+        margin-bottom: 12px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 900px) {
+    .gallery-container {
+        margin-top: 70px;
+        padding: 25px 15px;
+    }
+    
+    .photo-collage {
+        columns: 3;
+        column-gap: 10px;
+    }
+    
+    .photo-item {
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+    
+    .gallery-intro {
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        margin-top: 65px;
+        padding: 20px 12px;
+    }
+    
+    .photo-collage {
+        columns: 3;
+        column-gap: 8px;
+    }
+    
+    .photo-item {
+        margin-bottom: 8px;
+        border-radius: 6px;
+        box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .photo-item:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+    
+    .gallery-nav {
+        padding: 0 12px;
+    }
+    
+    .gallery-title {
+        font-size: 16px;
+    }
+    
+    .back-link {
+        font-size: 13px;
+    }
+    
+    .gallery-intro {
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+    
+    .gallery-heading {
+        font-size: clamp(3rem, 10vw, 5rem);
+        letter-spacing: -2px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    /* Enhanced modal for mobile */
+    .modal-close {
+        top: 16px;
+        right: 16px;
+        width: 46px;
+        height: 46px;
+        font-size: 22px;
+    }
+    
+    .modal-content {
+        margin: 16px;
+        max-width: 92vw;
+        max-height: 88vh;
+    }
+    
+    .modal-image {
+        max-height: 70vh;
+        border-radius: 12px;
+    }
+    
+    .modal-info {
+        margin-top: 16px;
+        padding: 16px 20px;
+    }
+    
+    .modal-title {
+        font-size: 20px;
+        margin-bottom: 6px;
+    }
+    
+    .modal-year {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-container {
+        padding: 18px 10px;
+        margin-top: 60px;
+    }
+    
+    .photo-collage {
+        columns: 2;
+        column-gap: 8px;
+    }
+    
+    .photo-item {
+        margin-bottom: 8px;
+        border-radius: 6px;
+    }
+    
+    .gallery-heading {
+        font-size: clamp(2.5rem, 12vw, 4rem);
+        letter-spacing: -1.5px;
+    }
+    
+    .gallery-intro {
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-container {
+        padding: 15px 8px;
+        margin-top: 60px;
+    }
+    
+    .photo-collage {
+        columns: 2;
+        column-gap: 6px;
+    }
+    
+    .photo-item {
+        margin-bottom: 6px;
+        border-radius: 4px;
+    }
+    
+    .gallery-header {
+        padding: 12px 15px;
+    }
+    
+    .gallery-nav {
+        padding: 0 8px;
+    }
+    
+    .gallery-title {
+        font-size: 15px;
+    }
+    
+    .back-link {
+        font-size: 12px;
+        gap: 6px;
+    }
+    
+    .gallery-heading {
+        font-size: clamp(2.2rem, 11vw, 3.5rem);
+        letter-spacing: -1px;
+    }
+    
+    .gallery-intro {
+        margin-bottom: 30px;
+        padding: 0 5px;
+    }
+    
+    /* Mobile modal improvements */
+    .modal-close {
+        top: 12px;
+        right: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 20px;
+    }
+    
+    .modal-content {
+        margin: 10px;
+        max-width: 95vw;
+        max-height: 90vh;
+    }
+    
+    .modal-image {
+        border-radius: 10px;
+        max-height: 65vh;
+    }
+    
+    .modal-info {
+        margin-top: 12px;
+        padding: 12px 16px;
+    }
+    
+    .modal-title {
+        font-size: 18px;
+        margin-bottom: 4px;
+    }
+    
+    .modal-year {
+        font-size: 13px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+    .gallery-container {
+        padding: 12px 6px;
+    }
+    
+    .photo-collage {
+        columns: 2;
+        column-gap: 4px;
+    }
+    
+    .photo-item {
+        margin-bottom: 4px;
+        border-radius: 3px;
+    }
+    
+    .gallery-heading {
+        font-size: clamp(2rem, 10vw, 3rem);
+    }
+    
+    .gallery-intro {
+        margin-bottom: 25px;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .photo-item {
+        border: 2px solid #ffffff;
+    }
+    
+    .back-link:focus,
+    .modal-close:focus {
+        outline: 3px solid #ffffff;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .photo-item,
+    .photo-item img,
+    .image-modal,
+    .back-link {
+        transition: none;
+    }
+    
+    .photo-item:hover {
+        transform: none;
+    }
+    
+    .photo-item:hover img {
+        transform: none;
+    }
+    
+    .photo-item.loading {
+        animation: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .gallery-header,
+    .gallery-footer {
+        display: none;
+    }
+    
+    .photo-collage {
+        columns: 3;
+        column-gap: 15px;
+    }
+    
+    .photo-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 15px;
+    }
+    
+    .photo-item img {
+        filter: none;
+    }
+    
+    .gallery-heading {
+        color: #000000;
+        -webkit-text-fill-color: #000000;
+    }
+}
