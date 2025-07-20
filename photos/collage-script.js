@@ -515,11 +515,10 @@ class PhotoCollage {
         photoItem.setAttribute('itemscope', '');
         photoItem.setAttribute('itemtype', 'https://schema.org/ImageObject');
         
-        // Set initial state for smooth entrance
+        // Set initial state for stable layout
         photoItem.style.opacity = '0';
         photoItem.style.transform = 'translateY(30px)';
         photoItem.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-        photoItem.style.minHeight = '280px';
         
         const img = document.createElement('img');
         img.src = photo.src;
@@ -549,8 +548,7 @@ class PhotoCollage {
         
         img.addEventListener('load', () => {
             photoItem.classList.remove('loading');
-            photoItem.style.minHeight = 'auto';
-            this.adjustImageDisplay(img);
+            this.adjustImageDisplay(img, photoItem);
         });
         
         img.addEventListener('error', () => {
@@ -562,25 +560,56 @@ class PhotoCollage {
         return photoItem;
     }
 
-    adjustImageDisplay(img) {
-        // Ensure aspect ratio is maintained
-        const aspectRatio = img.naturalWidth / img.naturalHeight;
+    adjustImageDisplay(img, photoItem) {
+        // Get responsive grid settings based on viewport width
+        const gridSettings = this.getGridSettings();
         
-        // Add a subtle random rotation for more organic feel (reduced range)
-        const rotation = (Math.random() - 0.5) * 0.8; // -0.4 to 0.4 degree
-        img.style.transform = `rotate(${rotation}deg)`;
+        // Wait for image to fully load and get actual dimensions
+        setTimeout(() => {
+            const imageHeight = img.offsetHeight;
+            const rowSpan = Math.ceil((imageHeight + gridSettings.gap) / (gridSettings.rowHeight + gridSettings.gap));
+            
+            // Apply the row span to create masonry effect
+            photoItem.style.gridRowEnd = `span ${rowSpan}`;
+        }, 50); // Small delay to ensure image is rendered
         
-        // Ensure image maintains its natural proportions
+        // Ensure image maintains proper display
         img.style.width = '100%';
         img.style.height = 'auto';
-        img.style.objectFit = 'contain';
+        img.style.display = 'block';
+        img.style.objectFit = 'cover';
         
-        // Smooth staggered loading effect
-        const delay = Math.random() * 400;
+        // Add subtle organic feel without affecting layout
+        const rotation = (Math.random() - 0.5) * 0.4;
+        img.style.transform = `rotate(${rotation}deg)`;
+        
+        // Smooth reveal animation
+        const delay = Math.random() * 200;
         setTimeout(() => {
-            img.style.opacity = '1';
-            img.style.transform += ' translateY(0) scale(1)';
+            photoItem.style.opacity = '1';
+            photoItem.style.transform = 'translateY(0)';
         }, delay);
+    }
+
+    getGridSettings() {
+        // Return grid settings based on current viewport width
+        const width = window.innerWidth;
+        
+        if (width <= 380) {
+            return { gap: 4, rowHeight: 4 };
+        } else if (width <= 480) {
+            return { gap: 6, rowHeight: 5 };
+        } else if (width <= 600) {
+            return { gap: 8, rowHeight: 6 };
+        } else if (width <= 768) {
+            return { gap: 8, rowHeight: 6 };
+        } else if (width <= 900) {
+            return { gap: 10, rowHeight: 8 };
+        } else if (width <= 1200) {
+            return { gap: 12, rowHeight: 8 };
+        } else {
+            return { gap: 16, rowHeight: 10 };
+        }
     }
 
     setupEventListeners() {
@@ -643,6 +672,32 @@ class PhotoCollage {
                 setTimeout(() => {
                     photoItem.style.transform = '';
                 }, 150);
+            }
+        });
+
+        // Window resize handler for responsive masonry layout
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                this.recalculateMasonryLayout();
+            }, 250);
+        });
+    }
+
+    recalculateMasonryLayout() {
+        // Recalculate masonry layout for all loaded images
+        const allPhotoItems = this.photoContainer.querySelectorAll('.photo-item:not(.loading)');
+        const gridSettings = this.getGridSettings();
+        
+        allPhotoItems.forEach(photoItem => {
+            const img = photoItem.querySelector('img');
+            if (img && img.complete) {
+                setTimeout(() => {
+                    const imageHeight = img.offsetHeight;
+                    const rowSpan = Math.ceil((imageHeight + gridSettings.gap) / (gridSettings.rowHeight + gridSettings.gap));
+                    photoItem.style.gridRowEnd = `span ${rowSpan}`;
+                }, 50);
             }
         });
     }
